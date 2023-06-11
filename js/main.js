@@ -1,110 +1,76 @@
-$(function(){
+/* global function */
 
-  /* Drop-down menu */
-  $('#menu-nav-icon').click(function(){
-    $('#main-nav').slideToggle()
-  })
-  $(window).on('resize', function (){
-    if ($(window).width() > 768){
-        $('#main-nav').show();
-    }else{
-        $('#main-nav').hide();
-    }
-  });
+window.addEventListener('DOMContentLoaded', () => {
 
-  /* Share */
-  var shares = $("#social-share").children();
-  var url = shares.first().attr('data-url');
-  var encodedUrl = encodeURIComponent(url)
-
-  shares.each(function(){
-     this.href += encodedUrl;
-  })
-
-  /* Gallery Display */
-  // Get a list of gallery ids
-  var slideIndices = {};
-  var galleries = $('.gallery');
-  //console.log(galleries);
-  //console.log(galleries[0]);
-
-  $('.gallery').each(function(index){
-    //console.log( index + ": " + $( this ).attr("id") );
-    slideIndices[$(this).attr("id")] = 1;
-  });
-  //console.log(slideIndices);
-
-  galleries.each(function(){
-    showSlides($(this).attr("id"), 1);
-  })
-
-
-  function showSlides(id, n) {
-    galleries.each(function(){
-      var that = $(this);
-      if(that.attr("id") == id){
-        var slides = that.find('.mySlides');
-        var dots = that.find('.demo');
-        var captionText = that.find('.caption');
-        console.log("Slide length is " + slides.length);
-        if (n > slides.length){
-          slideIndices[id] = 1;
-          n = 1;
-        }
-        if (n < 1){
-          slideIndices[id] = slides.length;
-          n = slides.length;
-        }
-        console.log("n is "+ n);
-        slides.each(function(index){
-          if(index == (n-1)){
-            console.log("here");
-            $(this).css({"display": "block"});
-          }else{
-            $(this).css({"display": "none"});
-          }
-        })
-        dots.each(function(index){
-          if(index == (n-1)){
-            $(this).addClass("display");
-          }else{
-            $(this).removeClass("display");
-          }
-        })
-        var capText = $(dots[slideIndices[id]]).attr("alt");
-        try{
-          capText = capText.split('/').pop().replace(/\.[^/.]+$/, "");
-        }catch(e){
-          capText = $(dots[slideIndices[id]]).attr("alt");
-        }
-        captionText.html(capText);
-      }
-    })
+  Global.themeInfo = {
+    theme: `Redefine v${Global.theme_config.version}`,
+    author: 'EvanNotFound',
+    repository: 'https://github.com/EvanNotFound/hexo-theme-redefine'
   }
 
-   /* install event function */
-   $(".gallery .columns .column img").each(function(){
-     $(this).click(function(){
-       var key = $(this).attr("data-id");
-       var num = $(this).attr("data-num");
-       showSlides(key, slideIndices[key] = num);
-     })
-   });
+  Global.localStorageKey = 'Global-THEME-STATUS';
 
-   galleries.each(function(){
-     $(this).find(".prev").click(function(){
-       var key = $(this).attr("data-id");
-       slideIndices[key] -=1;
-       console.log("Index is " +  slideIndices[key]);
-       showSlides(key, slideIndices[key]);
-     })
-   })
-   galleries.each(function(){
-     $(this).find(".next").click(function(){
-       var key = $(this).attr("data-id");
-       slideIndices[key] +=1;
-       console.log("Index is " +  slideIndices[key]);
-       showSlides(key, slideIndices[key]);
-     })
-   })
-})
+  Global.styleStatus = {
+    isExpandPageWidth: false,
+    isDark: false,
+    fontSizeLevel: 0,
+    isOpenPageAside: true
+  }
+
+  // print theme base info
+  Global.printThemeInfo = () => {
+    console.log(`      ______ __  __  ______  __    __  ______                       \r\n     \/\\__  _\/\\ \\_\\ \\\/\\  ___\\\/\\ \"-.\/  \\\/\\  ___\\                      \r\n     \\\/_\/\\ \\\\ \\  __ \\ \\  __\\\\ \\ \\-.\/\\ \\ \\  __\\                      \r\n        \\ \\_\\\\ \\_\\ \\_\\ \\_____\\ \\_\\ \\ \\_\\ \\_____\\                    \r\n         \\\/_\/ \\\/_\/\\\/_\/\\\/_____\/\\\/_\/  \\\/_\/\\\/_____\/                    \r\n                                                               \r\n ______  ______  _____   ______  ______ __  __   __  ______    \r\n\/\\  == \\\/\\  ___\\\/\\  __-.\/\\  ___\\\/\\  ___\/\\ \\\/\\ \"-.\\ \\\/\\  ___\\   \r\n\\ \\  __<\\ \\  __\\\\ \\ \\\/\\ \\ \\  __\\\\ \\  __\\ \\ \\ \\ \\-.  \\ \\  __\\   \r\n \\ \\_\\ \\_\\ \\_____\\ \\____-\\ \\_____\\ \\_\\  \\ \\_\\ \\_\\\\\"\\_\\ \\_____\\ \r\n  \\\/_\/ \/_\/\\\/_____\/\\\/____\/ \\\/_____\/\\\/_\/   \\\/_\/\\\/_\/ \\\/_\/\\\/_____\/\r\n                                                               \r\n  Github: https:\/\/github.com\/EvanNotFound\/hexo-theme-redefine`);
+  }
+
+  // set styleStatus to localStorage
+  Global.setStyleStatus = () => {
+    localStorage.setItem(Global.localStorageKey, JSON.stringify(Global.styleStatus));
+  }
+
+  // get styleStatus from localStorage
+  Global.getStyleStatus = () => {
+    let temp = localStorage.getItem(Global.localStorageKey);
+    if (temp) {
+      temp = JSON.parse(temp);
+      for (let key in Global.styleStatus) {
+        Global.styleStatus[key] = temp[key];
+      }
+      return temp;
+    } else {
+      return null;
+    }
+  }
+
+  Global.refresh = () => {
+    Global.initUtils();
+    navbarShrink.init();
+    if (Global.data_config.masonry) {
+      Global.initMasonry();
+    }
+    Global.initModeToggle();
+    Global.initBackToTop();
+    if (Global.theme_config.home_banner.subtitle.text.length !== 0  && location.pathname === Global.hexo_config.root) {
+      Global.initTyped('subtitle');
+    }
+
+    if (Global.theme_config.plugins.mermaid.enable === true) {
+      Global.initMermaid();
+    }
+
+    if (Global.theme_config.navbar.search.enable === true) {
+      Global.initLocalSearch();
+    }
+
+    if (Global.theme_config.articles.code_block.copy === true) {
+      Global.initCopyCode();
+    }
+
+    if (Global.theme_config.articles.lazyload === true) {
+      Global.initLazyLoad();
+    }
+
+  }
+
+  Global.printThemeInfo();
+  Global.refresh();
+});
