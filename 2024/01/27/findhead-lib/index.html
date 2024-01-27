@@ -13,16 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://math-still.github.io/archives/2024/"/>
+    <link rel="canonical" href="https://math-still.github.io/2024/01/27/findhead-lib/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="Still&#39;blog">
-<meta property="og:url" content="https://math-still.github.io/archives/2024/index.html">
+        <meta name="description" content="系统头文件路径的查找一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍： 在程序中常用两种方法来包含头文件： 12#include &lt;header.h&gt;#include &quot;header.h&quot;  详细可以点这里**源文件包含 ** 头文件查找方式：  搜索当前目录(&lt;&gt;不会搜索当前目录) 搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux编译运行时查找头文件和库的规则">
+<meta property="og:url" content="https://math-still.github.io/2024/01/27/findhead-lib/index.html">
 <meta property="og:site_name" content="Still&#39;blog">
+<meta property="og:description" content="系统头文件路径的查找一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍： 在程序中常用两种方法来包含头文件： 12#include &lt;header.h&gt;#include &quot;header.h&quot;  详细可以点这里**源文件包含 ** 头文件查找方式：  搜索当前目录(&lt;&gt;不会搜索当前目录) 搜索">
 <meta property="og:locale">
+<meta property="article:published_time" content="2024-01-27T12:05:34.000Z">
+<meta property="article:modified_time" content="2024-01-27T12:07:27.625Z">
 <meta property="article:author" content="Math_Still">
 <meta name="twitter:card" content="summary">
     
@@ -36,7 +40,7 @@
     
     <title>
         
-            Archive: 2024 -
+            Linux编译运行时查找头文件和库的规则 -
         
         Math_Still&#39;blog
     </title>
@@ -186,36 +190,209 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
-        
-<div class="archive-list-container">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">Linux编译运行时查找头文件和库的规则</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Math_Still</span>
+                            
+                                <span class="author-label">Lv1</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-01-27 20:05:34</span>
+        <span class="mobile">2024-01-27 20:05</span>
+        <span class="hover-info">Created</span>
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2024</span>
-                <span class="archive-year-post-count">[2]</span>
-            </div>
-            <ul class="article-list">
-              
-              <li class="article-item" date-is='01-27'>
-                <a href="/2024/01/27/findhead-lib/">
-                  <span class="article-title">Linux编译运行时查找头文件和库的规则</span>
-                </a>
-              </li>
-              
-              <li class="article-item" date-is='01-23'>
-                <a href="/2024/01/23/CSer/">
-                  <span class="article-title">How to be a good CSer</span>
-                </a>
-              </li>
-              
-            </ul>
-        </section>
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-01-27 20:07:27</span>
+            <span class="mobile">2024-01-27 20:07</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="系统头文件路径的查找"><a href="#系统头文件路径的查找" class="headerlink" title="系统头文件路径的查找"></a>系统头文件路径的查找</h2><p>一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍：</p>
+<p>在程序中常用两种方法来包含头文件：</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;header.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;header.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>详细可以点这里**<a class="link" target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/preprocessor/include">源文件包含 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>**</p>
+<p>头文件查找方式：</p>
+<ul>
+<li>搜索当前目录(&lt;&gt;不会搜索当前目录)</li>
+<li>搜索<code>-I</code>指定的目录</li>
+<li>找gcc的环境变量 C_INCLUDE_PATH，CPLUS_INCLUDE_PATH，OBJC_INCLUDE_PATH</li>
+<li>找库目录: <code>/usr/include</code>, <code>/usr/local/include</code></li>
+<li>找gcc的一系列自带目录，如：<code>CPLUS_INCLUDE_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include</code></li>
+</ul>
+<h2 id="库文件路径的查找"><a href="#库文件路径的查找" class="headerlink" title="库文件路径的查找"></a>库文件路径的查找</h2><ul>
+<li>gcc会去找<code>-L</code>指定的目录</li>
+<li>找gcc的环境变量<code>LIBRARY_PATH</code></li>
+<li>找库目录<code>/lib和/lib64</code>,<code>/usr/lib 和/usr/lib64</code>,<code>/usr/local/lib和/usr/local/lib64</code></li>
+</ul>
+<blockquote>
+<p>gcc编译时只会查找相应的头文件，而不会进行连接。只要include设置完全，就可以编译通过。所以就会经常发生编译可以通过，但运行时却无法找到相关类或者函数的实现。</p>
+</blockquote>
+<h2 id="运行时库文件动态库路径的查找"><a href="#运行时库文件动态库路径的查找" class="headerlink" title="运行时库文件动态库路径的查找"></a>运行时库文件动态库路径的查找</h2><ul>
+<li>编译目标代码时指定的动态库搜索路径；这是通过gcc的参数<code>-Wl,-rpath=</code>指定。当指定多个动态库搜索路径时，路径之间用冒号<code>：</code>分隔</li>
+<li>环境变量<code>LD_LIBRARY_PATH</code>指定的动态库搜索路径</li>
+<li>配置文件<code>/etc/ld.so.conf</code>中指定的动态库搜索路径</li>
+<li>默认的动态库搜索路径<code>/lib</code>, <code>/usr/lib</code></li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> Linux编译运行时查找头文件和库的规则</li>
+        <li><strong>Author:</strong> Math_Still</li>
+        <li><strong>Created at:</strong> 2024-01-27 20:05:34</li>
+        
+            <li>
+                <strong>Updated at:</strong> 2024-01-27 20:07:27
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://math-still.github.io/2024/01/27/findhead-lib/
+        </li>
+        <li>
+            <strong>License:</strong> This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2024/01/23/CSer/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">How to be a good CSer</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;Comments
+    </div>
+    
+
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-pjax>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://math-still.github.io/',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Linux编译运行时查找头文件和库的规则</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%A4%B4%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">系统头文件路径的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">库文件路径的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%93%E6%96%87%E4%BB%B6%E5%8A%A8%E6%80%81%E5%BA%93%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">运行时库文件动态库路径的查找</span></a></li></ol>
+
     </div>
 </div>
+            </div>
+        
+    </div>
+</div>
+
 
                 
 
@@ -291,6 +468,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-side-tools-container">
@@ -402,6 +600,16 @@
 
 
 <div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
     
 </div>
 
