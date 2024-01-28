@@ -13,20 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://math-still.github.io/2024/01/27/findhead-lib/"/>
+    <link rel="canonical" href="https://math-still.github.io/2024/01/28/gnu-compiler-common-options/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="系统头文件路径的查找一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍： 在程序中常用两种方法来包含头文件： 12#include &lt;header.h&gt;#include &quot;header.h&quot;  详细可以点这里源文件包含  头文件查找方式：  搜索当前目录(&lt;&gt;不会搜索当前目录) 搜索-I指定">
+        <meta name="description" content="编译链接选项：  -o output_filename：指定输出文件的名称，即生成的目标可执行文件名。 -c：只进行编译，不进行链接，生成.o（对象文件）。 -Wl,option传递选项给链接器   在g++（或gcc）编译器中，-Wl,option 是一个传递选项给链接器的特殊语法。这里的 -Wl 表示“传递给链接器（Linker）”，后面跟着逗号和具体的链接器选项。 当你需要在编译时指定链接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux编译运行时查找头文件和库的规则">
-<meta property="og:url" content="https://math-still.github.io/2024/01/27/findhead-lib/index.html">
+<meta property="og:title" content="GNU命令行常用参数">
+<meta property="og:url" content="https://math-still.github.io/2024/01/28/GNU-Compiler-common-options/index.html">
 <meta property="og:site_name" content="Still&#39;blog">
-<meta property="og:description" content="系统头文件路径的查找一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍： 在程序中常用两种方法来包含头文件： 12#include &lt;header.h&gt;#include &quot;header.h&quot;  详细可以点这里源文件包含  头文件查找方式：  搜索当前目录(&lt;&gt;不会搜索当前目录) 搜索-I指定">
+<meta property="og:description" content="编译链接选项：  -o output_filename：指定输出文件的名称，即生成的目标可执行文件名。 -c：只进行编译，不进行链接，生成.o（对象文件）。 -Wl,option传递选项给链接器   在g++（或gcc）编译器中，-Wl,option 是一个传递选项给链接器的特殊语法。这里的 -Wl 表示“传递给链接器（Linker）”，后面跟着逗号和具体的链接器选项。 当你需要在编译时指定链接">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-01-27T12:05:34.000Z">
-<meta property="article:modified_time" content="2024-01-27T12:26:17.355Z">
+<meta property="article:published_time" content="2024-01-28T15:27:16.000Z">
+<meta property="article:modified_time" content="2024-01-28T15:27:53.630Z">
 <meta property="article:author" content="Math_Still">
 <meta name="twitter:card" content="summary">
     
@@ -40,7 +40,7 @@
     
     <title>
         
-            Linux编译运行时查找头文件和库的规则 -
+            GNU命令行常用参数 -
         
         Math_Still&#39;blog
     </title>
@@ -196,7 +196,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">Linux编译运行时查找头文件和库的规则</h1>
+                    <h1 class="article-title-regular">GNU命令行常用参数</h1>
                 </div>
             
                 
@@ -218,15 +218,15 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-01-27 20:05:34</span>
-        <span class="mobile">2024-01-27 20:05</span>
+        <span class="desktop">2024-01-28 23:27:16</span>
+        <span class="mobile">2024-01-28 23:27</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-01-27 20:26:17</span>
-            <span class="mobile">2024-01-27 20:26</span>
+            <span class="desktop">2024-01-28 23:27:53</span>
+            <span class="mobile">2024-01-28 23:27</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -250,33 +250,80 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="系统头文件路径的查找"><a href="#系统头文件路径的查找" class="headerlink" title="系统头文件路径的查找"></a>系统头文件路径的查找</h2><p>一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍：</p>
-<p>在程序中常用两种方法来包含头文件：</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;header.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;header.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>详细可以点这里<a class="link" target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/preprocessor/include">源文件包含 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>头文件查找方式：</p>
+                <ol>
+<li><p><strong>编译链接选项</strong>：</p>
 <ul>
-<li>搜索当前目录(&lt;&gt;不会搜索当前目录)</li>
-<li>搜索<code>-I</code>指定的目录</li>
-<li>找gcc的环境变量 C_INCLUDE_PATH，CPLUS_INCLUDE_PATH，OBJC_INCLUDE_PATH</li>
-<li>找库目录: <code>/usr/include</code>, <code>/usr/local/include</code></li>
-<li>找gcc的一系列自带目录，如：<code>CPLUS_INCLUDE_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include</code></li>
-</ul>
-<h2 id="库文件路径的查找"><a href="#库文件路径的查找" class="headerlink" title="库文件路径的查找"></a>库文件路径的查找</h2><ul>
-<li>gcc会去找<code>-L</code>指定的目录</li>
-<li>找gcc的环境变量<code>LIBRARY_PATH</code></li>
-<li>找库目录<code>/lib和/lib64</code>,<code>/usr/lib 和/usr/lib64</code>,<code>/usr/local/lib和/usr/local/lib64</code></li>
+<li><code>-o output_filename</code>：指定输出文件的名称，即生成的目标可执行文件名。</li>
+<li><code>-c</code>：只进行编译，不进行链接，生成<code>.o</code>（对象文件）。</li>
+<li><code>-Wl,option</code>传递选项给链接器</li>
 </ul>
 <blockquote>
-<p>gcc编译时只会查找相应的头文件，而不会进行连接。只要include设置完全，就可以编译通过。所以就会经常发生编译可以通过，但运行时却无法找到相关类或者函数的实现。</p>
-</blockquote>
-<h2 id="运行时库文件动态库路径的查找"><a href="#运行时库文件动态库路径的查找" class="headerlink" title="运行时库文件动态库路径的查找"></a>运行时库文件动态库路径的查找</h2><ul>
-<li>编译目标代码时指定的动态库搜索路径；这是通过gcc的参数<code>-Wl,-rpath=</code>指定。当指定多个动态库搜索路径时，路径之间用冒号<code>：</code>分隔</li>
-<li>环境变量<code>LD_LIBRARY_PATH</code>指定的动态库搜索路径</li>
-<li>配置文件<code>/etc/ld.so.conf</code>中指定的动态库搜索路径</li>
-<li>默认的动态库搜索路径<code>/lib</code>, <code>/usr/lib</code></li>
+<p>在g++（或gcc）编译器中，<code>-Wl,option</code> 是一个传递选项给链接器的特殊语法。这里的 <code>-Wl</code> 表示“传递给链接器（Linker）”，后面跟着逗号和具体的链接器选项。</p>
+<p>当你需要在编译时指定链接器特有的选项，但又不想直接调用链接器（如ld），而是希望通过g++命令一并处理编译和链接步骤，这时就可以使用 <code>-Wl,option</code> 的形式。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -Wl,-rpath=/path/to/libs my_program.o -lmy_library</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，<code>-Wl,-rpath=/path/to/libs</code> 会将 <code>-rpath=/path/to/libs</code> 这个选项传递给链接器，使得生成的可执行文件在运行时能够从 <code>/path/to/libs</code> 目录查找动态链接库。</p>
+<p>其他常见的 <code>-Wl,option</code> 示例包括：</p>
+<ul>
+<li><code>-Wl,-static</code>：链接为静态库（生成静态链接的可执行文件）。</li>
+<li><code>-Wl,-soname,libname.so.major</code>：设置共享库的SONAME字段。</li>
+<li><code>-Wl,-Bsymbolic</code> 或 <code>-Wl,Bdynamic</code>、<code>-Wl,Bstatic</code>：控制符号解析方式等。</li>
 </ul>
+</blockquote>
+</li>
+<li><p><strong>预处理和源码处理</strong>：</p>
+<ul>
+<li><code>-E</code>：预处理后停止，生成后缀为 .i 的预编译文件。</li>
+<li><code>-S</code>：汇编后停下来，生成后缀为 .s 的汇编源文件。</li>
+<li><code>-std=c++[version]</code>：指定C++语言的标准版本，例如<code>-std=c++11</code>、<code>-std=c++14</code>等。</li>
+</ul>
+</li>
+<li><p><strong>优化选项</strong>：</p>
+<ul>
+<li><code>-O0</code>：无优化。</li>
+<li><code>-O1</code>至<code>-O3</code>：逐步提升优化级别，<code>-O3</code>是最高的优化级别。</li>
+<li><code>-Ofast</code>：更激进的优化，可能违反某些标准规定以换取更高的性能。</li>
+<li><code>-march=native</code>：针对当前机器架构进行特定优化。</li>
+</ul>
+</li>
+<li><p><strong>头文件和库操作</strong>：</p>
+<ul>
+<li><code>-I directory</code>：添加一个目录到头文件搜索路径。</li>
+<li><code>-L directory</code>：添加一个目录到库文件搜索路径。</li>
+<li><code>-l library</code>：链接指定的库。</li>
+<li><code>-static</code>：生成静态链接的可执行文件，不依赖外部共享库。</li>
+<li><code>-shared</code>：生成共享库文件（DLL或.so）。</li>
+</ul>
+</li>
+<li><p><strong>警告与错误处理</strong>：</p>
+<ul>
+<li><code>-Wall</code>：开启所有常见警告。</li>
+<li><code>-Werror</code>：将所有警告视为错误。</li>
+<li><code>-pedantic</code>：遵循ISO C++标准严格要求，不符合则发出相应的警告。</li>
+<li><code>-Wcast-align</code> ：当源程序中地址不需要对齐的指针指向一个地址需要对齐的变量地址时，则产生一个警告。</li>
+<li><code>-v</code>：输出 gcc 工作的详细过程</li>
+<li><code>-Q</code>：显示编译过程的统计数据和每一个函数名</li>
+<li><code>--target-help</code>：显示目前所用的gcc支持CPU类型</li>
+</ul>
+</li>
+<li><p>调试选项</p>
+<ul>
+<li><code>-g</code>：生成包含调试信息的目标文件，以便使用GDB等调试器进行调试。</li>
+<li><code>-p</code> 和<code> -pg</code>：会将剖析（Profiling）信息加入到最终生成的二进制代码中。剖析信息对于找出程序的性能瓶颈很有帮助，是协助Linux程序员开发出高性能程序的有力工具。</li>
+<li><code>-save-temps</code>：保存编译过程中生成的一些列中间文件。</li>
+</ul>
+<blockquote>
+<p>gcc 在编译时不会将调试符号插入到生成的二进制代码中，如果需要在编译时生成调试符号信息，可以使用 gcc 的 -g 或 -ggdb 选项。</p>
+<p>通过在 -g 选项后附加数字1、2、3指定在代码中加入调试信息的多少。默认的级别是-g2。</p>
+<ul>
+<li><code>-g1</code>不包含局部变量和与行号有关的调试信息，因此只能够用于回溯跟踪和堆栈转储。</li>
+<li><code>-g2</code>此时产生的调试信息包括：扩展的符号表、行号、局部或外部变量信息</li>
+<li><code>-g3</code>包含级别2中的所有调试信息以及源代码中定义的宏。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p>​	</p>
 
             </div>
 
@@ -284,16 +331,16 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> Linux编译运行时查找头文件和库的规则</li>
+        <li><strong>Title:</strong> GNU命令行常用参数</li>
         <li><strong>Author:</strong> Math_Still</li>
-        <li><strong>Created at:</strong> 2024-01-27 20:05:34</li>
+        <li><strong>Created at:</strong> 2024-01-28 23:27:16</li>
         
             <li>
-                <strong>Updated at:</strong> 2024-01-27 20:26:17
+                <strong>Updated at:</strong> 2024-01-28 23:27:53
             </li>
         
         <li>
-            <strong>Link:</strong> https://math-still.github.io/2024/01/27/findhead-lib/
+            <strong>Link:</strong> https://math-still.github.io/2024/01/28/GNU-Compiler-common-options/
         </li>
         <li>
             <strong>License:</strong> This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>.
@@ -311,29 +358,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2024/01/28/GNU-Compiler-common-options/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">GNU命令行常用参数</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2024/01/23/CSer/"
+                            href="/2024/01/27/findhead-lib/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">How to be a good CSer</span>
+                                    <span class="post-nav-title-item">Linux编译运行时查找头文件和库的规则</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -398,8 +430,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">Linux编译运行时查找头文件和库的规则</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%A4%B4%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">系统头文件路径的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">库文件路径的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%93%E6%96%87%E4%BB%B6%E5%8A%A8%E6%80%81%E5%BA%93%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">运行时库文件动态库路径的查找</span></a></li></ol>
+        <div class="page-title">GNU命令行常用参数</div>
+        
 
     </div>
 </div>
