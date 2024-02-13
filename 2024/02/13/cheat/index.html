@@ -13,22 +13,26 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://math-still.github.io/2024/01/27/findhead-lib/"/>
+    <link rel="canonical" href="https://math-still.github.io/2024/02/13/cheat/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="系统头文件路径的查找一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍： 在程序中常用两种方法来包含头文件： 12#include &lt;header.h&gt;#include &quot;header.h&quot;  详细可以点这里源文件包含  头文件查找方式：  搜索当前目录(&lt;&gt;不会搜索当前目录) 搜索-I指定">
+        <meta name="description" content="cheat sheet-指令速查表cheat.sh 是一个在线工具和开源项目，它提供了一个统一访问全球最佳社区驱动的速查表资源的方式。用户可以通过简单的命令行接口、浏览器或直接在编辑器中查询各种编程语言、数据库管理系统（DBMS）、UNIX&#x2F;Linux命令以及更多技术主题的相关信息。 主要特点包括：  简单易用：只需通过curl命令或其他支持的接口，如curl cht.sh&#x2F;&lt;co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux编译运行时查找头文件和库的规则">
-<meta property="og:url" content="https://math-still.github.io/2024/01/27/findhead-lib/index.html">
+<meta property="og:title" content="cheat.sh-指令以及编程语言速查表">
+<meta property="og:url" content="https://math-still.github.io/2024/02/13/cheat/index.html">
 <meta property="og:site_name" content="Still&#39;blog">
-<meta property="og:description" content="系统头文件路径的查找一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍： 在程序中常用两种方法来包含头文件： 12#include &lt;header.h&gt;#include &quot;header.h&quot;  详细可以点这里源文件包含  头文件查找方式：  搜索当前目录(&lt;&gt;不会搜索当前目录) 搜索-I指定">
+<meta property="og:description" content="cheat sheet-指令速查表cheat.sh 是一个在线工具和开源项目，它提供了一个统一访问全球最佳社区驱动的速查表资源的方式。用户可以通过简单的命令行接口、浏览器或直接在编辑器中查询各种编程语言、数据库管理系统（DBMS）、UNIX&#x2F;Linux命令以及更多技术主题的相关信息。 主要特点包括：  简单易用：只需通过curl命令或其他支持的接口，如curl cht.sh&#x2F;&lt;co">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-01-27T12:05:34.000Z">
-<meta property="article:modified_time" content="2024-01-27T12:26:17.355Z">
+<meta property="og:image" content="https://camo.githubusercontent.com/19b00e8a8b5a4acc1f8d14f9a4667cb24b669883432141a30ab4637eb16ade4d/687474703a2f2f63686561742e73682f66696c65732f6269672d6c6f676f2d76322d66697865642e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/7de9c13c95d729b61760cff6ac8f4c5a667bccc6cc7235babe300e2ffb4e85be/68747470733a2f2f63686561742e73682f66696c65732f6368742e73682d75726c2d7374727563747572652e706e67">
+<meta property="article:published_time" content="2024-02-13T13:41:21.000Z">
+<meta property="article:modified_time" content="2024-02-13T14:16:43.428Z">
 <meta property="article:author" content="Math_Still">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/19b00e8a8b5a4acc1f8d14f9a4667cb24b669883432141a30ab4637eb16ade4d/687474703a2f2f63686561742e73682f66696c65732f6269672d6c6f676f2d76322d66697865642e706e67">
     
     
     <!--- Icon Part-->
@@ -40,7 +44,7 @@
     
     <title>
         
-            Linux编译运行时查找头文件和库的规则 -
+            cheat.sh-指令以及编程语言速查表 -
         
         Math_Still&#39;blog
     </title>
@@ -196,7 +200,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">Linux编译运行时查找头文件和库的规则</h1>
+                    <h1 class="article-title-regular">cheat.sh-指令以及编程语言速查表</h1>
                 </div>
             
                 
@@ -218,20 +222,31 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-01-27 20:05:34</span>
-        <span class="mobile">2024-01-27 20:05</span>
+        <span class="desktop">2024-02-13 21:41:21</span>
+        <span class="mobile">2024-02-13 21:41</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-01-27 20:26:17</span>
-            <span class="mobile">2024-01-27 20:26</span>
+            <span class="desktop">2024-02-13 22:16:43</span>
+            <span class="mobile">2024-02-13 22:16</span>
             <span class="hover-info">更新</span>
         </span>
     
 
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -250,33 +265,109 @@
             
 
             <div class="article-content markdown-body">
-                <h2 id="系统头文件路径的查找"><a href="#系统头文件路径的查找" class="headerlink" title="系统头文件路径的查找"></a>系统头文件路径的查找</h2><p>一个程序能正确编译、链接、运行需要满足3个条件：预处理时能找到头文件，连接时能找到库，运行时能找到库。下面分别介绍：</p>
-<p>在程序中常用两种方法来包含头文件：</p>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;header.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;header.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
+                <h2 id="cheat-sheet-指令速查表"><a href="#cheat-sheet-指令速查表" class="headerlink" title="cheat sheet-指令速查表"></a>cheat sheet-指令速查表</h2><p>cheat.sh 是一个在线工具和开源项目，它提供了一个统一访问全球最佳社区驱动的速查表资源的方式。用户可以通过简单的命令行接口、浏览器或直接在编辑器中查询各种编程语言、数据库管理系统（DBMS）、UNIX&#x2F;Linux命令以及更多技术主题的相关信息。</p>
+<p>主要特点包括：</p>
+<ol>
+<li><strong>简单易用</strong>：只需通过curl命令或其他支持的接口，如<code>curl cht.sh/&lt;command&gt;</code>，即可快速获取所需的技术文档或代码片段。</li>
+<li><strong>全面覆盖</strong>：涵盖超过56种编程语言，数个主流数据库系统，以及上千个常用UNIX&#x2F;Linux命令的参考文档。</li>
+<li><strong>即时响应</strong>：服务响应速度极快，通常能在100毫秒内返回结果，极大地提高了开发效率。</li>
+<li><strong>离线可用</strong>：尽管可以直接在线使用，但也可以本地安装以便于离线查阅。</li>
+<li><strong>集成便利</strong>：可以与多种编辑器、IDE和终端环境无缝集成，允许开发者在不离开当前工作环境的情况下查找资料。</li>
+<li><strong>智能提示</strong>：支持自动补全功能，使得搜索过程更为便捷。</li>
+<li><strong>隐形模式</strong>：甚至支持所谓的“隐形”或“静默”模式，可以在不打扰当前任务的情况下悄然查阅信息。</li>
+</ol>
+<p><img lazyload src="/images/loading.svg" data-src="https://camo.githubusercontent.com/19b00e8a8b5a4acc1f8d14f9a4667cb24b669883432141a30ab4637eb16ade4d/687474703a2f2f63686561742e73682f66696c65732f6269672d6c6f676f2d76322d66697865642e706e67" alt="cheat.sh"></p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>要从命令行获取UNIX&#x2F;Linux命令的备忘单，使用’ curl ‘或任何其他HTTP&#x2F;HTTPS客户端在查询中指定命令的名称来查询服务:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl cheat.sh/tar</span><br><span class="line">curl cht.sh/curl</span><br><span class="line">curl https://cheat.sh/rsync</span><br><span class="line">curl https://cht.sh/tr</span><br></pre></td></tr></table></figure></div>
 
-<p>详细可以点这里<a class="link" target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/preprocessor/include">源文件包含 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>头文件查找方式：</p>
+<p>可以同时使用HTTPS和HTTP访问服务，以及长服务名(cheat.sh)和短服务名(cht.sh)</p>
+<hr>
+<p>如果不知道所需命令的名称，可以使用~KEYWORD符号进行搜索。</p>
+<p>例如：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl cht.sh/~snapshot</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="编程语言速查"><a href="#编程语言速查" class="headerlink" title="编程语言速查"></a>编程语言速查</h2><p><img lazyload src="/images/loading.svg" data-src="https://camo.githubusercontent.com/7de9c13c95d729b61760cff6ac8f4c5a667bccc6cc7235babe300e2ffb4e85be/68747470733a2f2f63686561742e73682f66696c65732f6368742e73682d75726c2d7374727563747572652e706e67" alt="usage_search"></p>
+<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><ul>
+<li>查询Go语言中的指针知识：<code>curl cht.sh/go/Pointers</code></li>
+<li>查看Scala语言中的函数相关资料：<code>curl cht.sh/scala/Functions</code></li>
+<li>学习Python中的lambda表达式：<code>curl cht.sh/python/lambda</code></li>
+</ul>
+<p>若要查看支持的编程语言列表，可以使用特殊查询<code>:list</code>：</p>
 <ul>
-<li>搜索当前目录(&lt;&gt;不会搜索当前目录)</li>
-<li>搜索<code>-I</code>指定的目录</li>
-<li>找gcc的环境变量 C_INCLUDE_PATH，CPLUS_INCLUDE_PATH，OBJC_INCLUDE_PATH</li>
-<li>找库目录: <code>/usr/include</code>, <code>/usr/local/include</code></li>
-<li>找gcc的一系列自带目录，如：<code>CPLUS_INCLUDE_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/include</code></li>
+<li>显示Go语言的所有速查表：<code>curl cht.sh/go/:list</code></li>
 </ul>
-<h2 id="库文件路径的查找"><a href="#库文件路径的查找" class="headerlink" title="库文件路径的查找"></a>库文件路径的查找</h2><ul>
-<li>gcc会去找<code>-L</code>指定的目录</li>
-<li>找gcc的环境变量<code>LIBRARY_PATH</code></li>
-<li>找库目录<code>/lib和/lib64</code>,<code>/usr/lib 和/usr/lib64</code>,<code>/usr/local/lib和/usr/local/lib64</code></li>
+<h3 id="learn参数"><a href="#learn参数" class="headerlink" title=":learn参数"></a>:learn参数</h3><p>对于大多数编程语言，cheat.sh 还提供了一个名为<code>:learn</code>的特殊页面，介绍该语言的基础知识，这与”Learn X in Y Minutes”项目直接对应，非常适合初学者快速入门。</p>
+<p>如果针对某种编程语言的查询没有现成的速查表，cheat.sh 会基于已有的速查表和StackOverflow上的答案动态生成。虽然不能保证返回的结果100%准确匹配，但通常都能找到你想要的答案。</p>
+<p>可以尝试以下命令以了解其回答形式：</p>
+<ul>
+<li>Go语言反转列表：<code>curl cht.sh/go/reverse+a+list</code></li>
+<li>Python随机获取列表元素：<code>curl cht.sh/python/random+list+elements</code></li>
+<li>JavaScript解析JSON：<code>curl cht.sh/js/parse+json</code></li>
+<li>Lua合并表格：<code>curl cht.sh/lua/merge+tables</code></li>
+<li>Clojure处理可变参数函数：<code>curl cht.sh/clojure/variadic+function</code></li>
 </ul>
+<p>如对某条回答不满意，可以通过添加&#x2F;1、&#x2F;2等参数来选择其他答案：</p>
+<ul>
+<li>Python随机字符串：<code>curl cht.sh/python/random+string</code></li>
+<li>选择另一个Python随机字符串方法：<code>curl cht.sh/python/random+string/1</code></li>
+</ul>
+<p>cheat.sh 返回的速查表格式化为查询编程语言的实际代码片段（尽量做到这一点），可以直接复制粘贴到对应程序中。如有注释，则按照相应语言的语法进行格式化。</p>
+<ul>
+<li>查询Lua中获取表格键的方法，并显示带有注释的示例代码：<code>curl cht.sh/lua/table+keys</code></li>
+</ul>
+<p>如果不需要文本注释，可以使用特殊选项<code>\?Q</code>移除它们：</p>
+<ul>
+<li>不包含注释的Lua表格键查询结果：<code>curl cht.sh/lua/table+keys\?Q</code></li>
+</ul>
+<p>若不需要语法高亮，可通过<code>\?T</code>选项关闭。多个选项可以组合使用：</p>
+<ul>
+<li>关闭Go语言反转列表的注释和语法高亮：<code>curl cht.sh/go/reverse+a+list\?QT</code></li>
+</ul>
+<p>更多选项详情及帮助信息，可以查阅<code>:help</code>。</p>
+<h2 id="client安装与使用"><a href="#client安装与使用" class="headerlink" title="client安装与使用"></a>client安装与使用</h2><h3 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h3><ul>
+<li>用户安装</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/bin&quot;</span>  <span class="comment"># or another directory on your $PATH</span></span><br><span class="line"><span class="built_in">mkdir</span> -p <span class="string">&quot;<span class="variable">$PATH_DIR</span>&quot;</span></span><br><span class="line">curl https://cht.sh/:cht.sh &gt; <span class="string">&quot;<span class="variable">$PATH_DIR</span>/cht.sh&quot;</span></span><br><span class="line"><span class="built_in">chmod</span> +x <span class="string">&quot;<span class="variable">$PATH_DIR</span>/cht.sh&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>全局安装</li>
+</ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://cht.sh/:cht.sh | sudo <span class="built_in">tee</span> /usr/local/bin/cht.sh &amp;&amp; sudo <span class="built_in">chmod</span> +x /usr/local/bin/cht.sh</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
-<p>gcc编译时只会查找相应的头文件，而不会进行连接。只要include设置完全，就可以编译通过。所以就会经常发生编译可以通过，但运行时却无法找到相关类或者函数的实现。</p>
+<p>Note: 运行shell模式需要依赖包”rlwrap”，可通过sudo apt install rlwrap进行安装。</p>
 </blockquote>
-<h2 id="运行时库文件动态库路径的查找"><a href="#运行时库文件动态库路径的查找" class="headerlink" title="运行时库文件动态库路径的查找"></a>运行时库文件动态库路径的查找</h2><ul>
-<li>编译目标代码时指定的动态库搜索路径；这是通过gcc的参数<code>-Wl,-rpath=</code>指定。当指定多个动态库搜索路径时，路径之间用冒号<code>：</code>分隔</li>
-<li>环境变量<code>LD_LIBRARY_PATH</code>指定的动态库搜索路径</li>
-<li>配置文件<code>/etc/ld.so.conf</code>中指定的动态库搜索路径</li>
-<li>默认的动态库搜索路径<code>/lib</code>, <code>/usr/lib</code></li>
+<h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><p>使用cht.sh代替curl，以更自然的方式（空格代替+）执行查询。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cht.sh go reverse a list</span><br><span class="line">cht.sh python random list elements</span><br><span class="line">cht.sh js parse json</span><br></pre></td></tr></table></figure></div>
+
+<p>启动特殊shell模式，可以连续执行多个查询，并在相同语言上下文中操作。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cht.sh --shell</span><br><span class="line">cht.sh&gt; go reverse a list</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>在shell模式下，使用cd命令切换编程语言上下文，或者直接在查询前指定语言名称。</li>
 </ul>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cht.sh --shell</span><br><span class="line">cht.sh&gt; <span class="built_in">cd</span> go</span><br><span class="line">cht.sh/go&gt; reverse a list</span><br></pre></td></tr></table></figure></div>
+
+<p>或者</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cht.sh --shell go</span><br><span class="line">cht.sh/go&gt; reverse a list</span><br><span class="line">...</span><br><span class="line">cht.sh/go&gt; <span class="built_in">join</span> a list</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+
+<p>如果你想切换上下文环境，可以通过cd命令实现；如果只想对其他语言进行单次查询，只需在查询前加上&#x2F;：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cht.sh/python&gt; append file</span><br><span class="line"><span class="comment">#  python - How do you append to a file?</span></span><br><span class="line">with open(<span class="string">&quot;test.txt&quot;</span>, <span class="string">&quot;a&quot;</span>) as myfile:</span><br><span class="line">    myfile.write(<span class="string">&quot;appended text&quot;</span>)</span><br><span class="line">cht.sh/python&gt; C</span><br><span class="line">copy: 2 lines copied to the selection</span><br></pre></td></tr></table></figure></div>
+
+<p>如果要将最后一个答案复制到剪贴板中，可以使用c(复制)命令或c(复制，不加注释)命令。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cht.sh/python&gt; append file</span><br><span class="line"><span class="comment">#  python - How do you append to a file?</span></span><br><span class="line"></span><br><span class="line">with open(<span class="string">&quot;test.txt&quot;</span>, <span class="string">&quot;a&quot;</span>) as myfile:</span><br><span class="line">    myfile.write(<span class="string">&quot;appended text&quot;</span>)</span><br><span class="line">cht.sh/python&gt; C</span><br><span class="line">copy: 2 lines copied to the selection</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p><strong>Note:</strong></p>
+<p><strong>配置文件</strong>：</p>
+<p>cht.sh的配置文件位于~&#x2F;.cht.sh&#x2F;cht.sh.conf，可以通过环境变量CHTSH_CONF更改位置。例如，可以在此文件中设置关闭语法高亮选项或选择特定主题。</p>
+<p><strong>其他配置参数：</strong></p>
+<p>CHTSH_CURL_OPTIONS用于定义cht.sh查询时使用的curl选项。</p>
+<p>CHTSH_URL可设定cheat.sh服务器地址。</p>
+<p><strong>Tab补全支持：</strong></p>
+<p>对于Bash shell，下载并激活<code>:bash_completion</code>脚本至~&#x2F;.bashrc。</p>
+<p>对于ZSH shell，在~&#x2F;.zshrc中将<code>:zsh</code>脚本添加到fpath路径，并重新打开shell以加载插件。</p>
+</blockquote>
 
             </div>
 
@@ -284,16 +375,16 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Linux编译运行时查找头文件和库的规则</li>
+        <li><strong>标题:</strong> cheat.sh-指令以及编程语言速查表</li>
         <li><strong>作者:</strong> Math_Still</li>
-        <li><strong>创建于:</strong> 2024-01-27 20:05:34</li>
+        <li><strong>创建于:</strong> 2024-02-13 21:41:21</li>
         
             <li>
-                <strong>更新于:</strong> 2024-01-27 20:26:17
+                <strong>更新于:</strong> 2024-02-13 22:16:43
             </li>
         
         <li>
-            <strong>链接:</strong> https://math-still.github.io/2024/01/27/findhead-lib/
+            <strong>链接:</strong> https://math-still.github.io/2024/02/13/cheat/
         </li>
         <li>
             <strong>版权声明:</strong> 本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
@@ -305,35 +396,28 @@
             
 
             
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Linux/">#Linux</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
 
             
 
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2024/01/28/GNU-Compiler-common-options/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">GNU命令行常用参数</span>
-                                    <span class="post-nav-item">上一篇</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2024/01/23/CSer/"
+                            href="/2024/02/02/Personal_inner_System-The_iceberg_theory_of_the_Satya_model/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">How to be a good CSer</span>
+                                    <span class="post-nav-title-item">个人内在系统-萨提亚模式的冰山理论</span>
                                     <span class="post-nav-item">下一篇</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -398,8 +482,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Linux编译运行时查找头文件和库的规则</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%A4%B4%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">系统头文件路径的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">库文件路径的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%93%E6%96%87%E4%BB%B6%E5%8A%A8%E6%80%81%E5%BA%93%E8%B7%AF%E5%BE%84%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-text">运行时库文件动态库路径的查找</span></a></li></ol>
+        <div class="page-title">cheat.sh-指令以及编程语言速查表</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cheat-sheet-%E6%8C%87%E4%BB%A4%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="nav-text">cheat sheet-指令速查表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%80%9F%E6%9F%A5"><span class="nav-text">编程语言速查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-text">example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#learn%E5%8F%82%E6%95%B0"><span class="nav-text">:learn参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#client%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-text">client安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="nav-text">安装步骤：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-text">使用：</span></a></li></ol></li></ol>
 
     </div>
 </div>
