@@ -231,7 +231,7 @@
     <h1 class="archive-title">
       <span class="title-prompt">&gt;</span> Tags
     </h1>
-    <p class="archive-desc">A total of <strong>24</strong> tags</p>
+    <p class="archive-desc">A total of <strong>28</strong> tags</p>
   </header>
 
   <div class="tag-cloud">
@@ -250,6 +250,11 @@
       
         <a class="tag-cloud-item" href="/tags/NAO/" style="font-size: 1.1rem;">
           <span class="tag-hash">#</span>NAO
+          <span class="tag-count">(1)</span>
+        </a>
+      
+        <a class="tag-cloud-item" href="/tags/NLP/" style="font-size: 1.1rem;">
+          <span class="tag-hash">#</span>NLP
           <span class="tag-count">(1)</span>
         </a>
       
@@ -283,6 +288,11 @@
           <span class="tag-count">(2)</span>
         </a>
       
+        <a class="tag-cloud-item" href="/tags/counseling/" style="font-size: 1.1rem;">
+          <span class="tag-hash">#</span>counseling
+          <span class="tag-count">(1)</span>
+        </a>
+      
         <a class="tag-cloud-item" href="/tags/cpp/" style="font-size: 1.1rem;">
           <span class="tag-hash">#</span>cpp
           <span class="tag-count">(1)</span>
@@ -300,6 +310,11 @@
       
         <a class="tag-cloud-item" href="/tags/family/" style="font-size: 1.1rem;">
           <span class="tag-hash">#</span>family
+          <span class="tag-count">(1)</span>
+        </a>
+      
+        <a class="tag-cloud-item" href="/tags/family-constellations/" style="font-size: 1.1rem;">
+          <span class="tag-hash">#</span>family-constellations
           <span class="tag-count">(1)</span>
         </a>
       
@@ -333,9 +348,9 @@
           <span class="tag-count">(1)</span>
         </a>
       
-        <a class="tag-cloud-item" href="/tags/psychology/" style="font-size: 1.1rem;">
+        <a class="tag-cloud-item" href="/tags/psychology/" style="font-size: 1.4rem;">
           <span class="tag-hash">#</span>psychology
-          <span class="tag-count">(1)</span>
+          <span class="tag-count">(2)</span>
         </a>
       
         <a class="tag-cloud-item" href="/tags/robotics/" style="font-size: 1.1rem;">
@@ -350,6 +365,11 @@
       
         <a class="tag-cloud-item" href="/tags/study-guide/" style="font-size: 1.1rem;">
           <span class="tag-hash">#</span>study-guide
+          <span class="tag-count">(1)</span>
+        </a>
+      
+        <a class="tag-cloud-item" href="/tags/therapy/" style="font-size: 1.1rem;">
+          <span class="tag-hash">#</span>therapy
           <span class="tag-count">(1)</span>
         </a>
       
@@ -446,5 +466,38 @@
 <script src="/js/main.js"></script>
 
 
+
+  <!-- Inline fallback: hide loader regardless of external JS -->
+  <script>
+  (function() {
+    var el = document.getElementById('loader');
+    console.log('[loader] element:', !!el);
+    if (!el) return;
+    function hide(immediate) {
+      // If already hidden, skip
+      if (el.style.display === 'none' || el.classList.contains('hidden')) {
+        console.log('[loader] already hidden, skip');
+        return;
+      }
+      console.log('[loader] hiding now, immediate=' + immediate);
+      if (immediate) {
+        el.style.display = 'none';
+        window.dispatchEvent(new Event('resize'));
+      } else {
+        el.style.transition = 'opacity 0.6s ease';
+        el.style.opacity = '0';
+        setTimeout(function() {
+          el.style.display = 'none';
+          window.dispatchEvent(new Event('resize'));
+        }, 600);
+      }
+    }
+    // Try immediately (setTimeout 0 = after current execution context)
+    setTimeout(function() { hide(true); }, 0);
+    // Also try at 500ms, 1s, 2s, 3s, 4s
+    setTimeout(function() { hide(false); }, 500);
+    for (var i = 1; i <= 4; i++) setTimeout(function() { hide(false); }, i * 1000);
+  })();
+  </script>
 </body>
 </html>

@@ -298,5 +298,38 @@
 <script src="/js/main.js"></script>
 
 
+
+  <!-- Inline fallback: hide loader regardless of external JS -->
+  <script>
+  (function() {
+    var el = document.getElementById('loader');
+    console.log('[loader] element:', !!el);
+    if (!el) return;
+    function hide(immediate) {
+      // If already hidden, skip
+      if (el.style.display === 'none' || el.classList.contains('hidden')) {
+        console.log('[loader] already hidden, skip');
+        return;
+      }
+      console.log('[loader] hiding now, immediate=' + immediate);
+      if (immediate) {
+        el.style.display = 'none';
+        window.dispatchEvent(new Event('resize'));
+      } else {
+        el.style.transition = 'opacity 0.6s ease';
+        el.style.opacity = '0';
+        setTimeout(function() {
+          el.style.display = 'none';
+          window.dispatchEvent(new Event('resize'));
+        }, 600);
+      }
+    }
+    // Try immediately (setTimeout 0 = after current execution context)
+    setTimeout(function() { hide(true); }, 0);
+    // Also try at 500ms, 1s, 2s, 3s, 4s
+    setTimeout(function() { hide(false); }, 500);
+    for (var i = 1; i <= 4; i++) setTimeout(function() { hide(false); }, i * 1000);
+  })();
+  </script>
 </body>
 </html>

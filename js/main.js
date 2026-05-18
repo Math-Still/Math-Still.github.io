@@ -46,12 +46,16 @@
     var elements = document.querySelectorAll('.scroll-reveal');
     if (!elements.length) return;
 
+    function reveal(el) {
+      el.classList.add('revealed');
+    }
+
     // Use Intersection Observer when available
     if ('IntersectionObserver' in window) {
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
+            reveal(entry.target);
             observer.unobserve(entry.target);
           }
         });
@@ -61,12 +65,21 @@
       });
 
       elements.forEach(function(el) {
+        // If already visible in viewport, reveal immediately
+        // This handles cases where IntersectionObserver callback
+        // fires late or doesn't fire (e.g., race condition with loader)
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0 &&
+            rect.top + rect.height > 0) {
+          reveal(el);
+          return;
+        }
         observer.observe(el);
       });
     } else {
       // Fallback: reveal all immediately
       elements.forEach(function(el) {
-        el.classList.add('revealed');
+        reveal(el);
       });
     }
   }
@@ -211,6 +224,18 @@
       return;
     }
 
+    // Safety: force hide loader after 5 seconds no matter what
+    setTimeout(function() {
+      if (loader && loader.style.display !== 'none') {
+        loader.style.opacity = '0';
+        loader.style.transition = 'opacity 0.8s ease';
+        setTimeout(function() {
+          loader.style.display = 'none';
+          window.dispatchEvent(new Event('resize'));
+        }, 800);
+      }
+    }, 5000);
+
     var startTime = Date.now();
     var currentProgress = 0;
     var targetProgress = 0;
@@ -335,6 +360,21 @@
     initRuntimeCounter();
     initTypingEffect();
     initLoadingProgress();
+
+    // Final fallback: force-hide loader after 6s no matter what.
+    // This ensures the page is never permanently blocked even if
+    // the progress animation stalls or the `load` event never fires.
+    setTimeout(function() {
+      var loader = document.getElementById('loader');
+      if (!loader) return;
+      if (loader.style.display === 'none') return;
+      loader.style.transition = 'opacity 0.8s ease';
+      loader.style.opacity = '0';
+      setTimeout(function() {
+        loader.style.display = 'none';
+        window.dispatchEvent(new Event('resize'));
+      }, 800);
+    }, 6000);
   }
 
   if (document.readyState === 'loading') {

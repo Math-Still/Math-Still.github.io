@@ -264,6 +264,45 @@
 
       <div class="card-body">
         <div class="card-meta">
+          <time class="card-date" datetime="2026-05-18">
+            <i class="fa-regular fa-calendar"></i> 2026-05-18
+          </time>
+          
+          <div class="card-tags">
+            
+            <a class="card-tag" href="/tags/family-constellations/">#family-constellations</a>
+            
+            <a class="card-tag" href="/tags/therapy/">#therapy</a>
+            
+            <a class="card-tag" href="/tags/psychology/">#psychology</a>
+            
+          </div>
+          
+        </div>
+
+        <h3 class="card-title">
+          <a href="/2026/05/18/Family-Constellations-Small-Object-Therapy/">家庭系统排列-小物件疗法</a>
+        </h3>
+
+        <p class="card-excerpt">
+          
+            什么是小物件疗法小物件疗法是从家庭系统排列（Family Constellations）衍生出来的一种心理干预技术，由史敬飞老师创新研发的一套简易系统整合工具。
+它通过使用一组人型小玩偶（每个有不同的颜色、形状、大小）来排列和呈现个体与外在客体或自己内在客体的关系。你身边任何可用的物件——茶杯、笔、本子、手机——都可以作为小物件，只要它能代表你想要呈现的客体。
+小物件是心灵的扫描仪，是咨询的门把手
+          
+        </p>
+
+        <a class="card-read-more" href="/2026/05/18/Family-Constellations-Small-Object-Therapy/">
+          Read More <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </article>
+    
+    <article class="article-card scroll-reveal">
+      
+
+      <div class="card-body">
+        <div class="card-meta">
           <time class="card-date" datetime="2024-03-28">
             <i class="fa-regular fa-calendar"></i> 2024-03-28
           </time>
@@ -469,9 +508,9 @@
             
             <a class="card-tag" href="/tags/Linux/">#Linux</a>
             
-            <a class="card-tag" href="/tags/compiler/">#compiler</a>
-            
             <a class="card-tag" href="/tags/gcc/">#gcc</a>
+            
+            <a class="card-tag" href="/tags/g/">#g++</a>
             
           </div>
           
@@ -646,5 +685,38 @@ Don’t purchase papers or have someone
 <script src="/js/main.js"></script>
 
 
+
+  <!-- Inline fallback: hide loader regardless of external JS -->
+  <script>
+  (function() {
+    var el = document.getElementById('loader');
+    console.log('[loader] element:', !!el);
+    if (!el) return;
+    function hide(immediate) {
+      // If already hidden, skip
+      if (el.style.display === 'none' || el.classList.contains('hidden')) {
+        console.log('[loader] already hidden, skip');
+        return;
+      }
+      console.log('[loader] hiding now, immediate=' + immediate);
+      if (immediate) {
+        el.style.display = 'none';
+        window.dispatchEvent(new Event('resize'));
+      } else {
+        el.style.transition = 'opacity 0.6s ease';
+        el.style.opacity = '0';
+        setTimeout(function() {
+          el.style.display = 'none';
+          window.dispatchEvent(new Event('resize'));
+        }, 600);
+      }
+    }
+    // Try immediately (setTimeout 0 = after current execution context)
+    setTimeout(function() { hide(true); }, 0);
+    // Also try at 500ms, 1s, 2s, 3s, 4s
+    setTimeout(function() { hide(false); }, 500);
+    for (var i = 1; i <= 4; i++) setTimeout(function() { hide(false); }, i * 1000);
+  })();
+  </script>
 </body>
 </html>

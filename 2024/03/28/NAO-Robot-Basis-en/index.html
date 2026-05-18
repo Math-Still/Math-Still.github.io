@@ -1104,6 +1104,11 @@
   <!-- Post Navigation -->
   <nav class="post-nav">
     
+    <a class="post-nav-prev" href="/2026/05/18/Family-Constellations-Small-Object-Therapy/">
+      <span class="nav-label"><i class="fa-solid fa-chevron-left"></i> Previous</span>
+      <span class="nav-title">家庭系统排列-小物件疗法</span>
+    </a>
+    
     
     <a class="post-nav-next" href="/2024/02/13/cheat/">
       <span class="nav-label">Next <i class="fa-solid fa-chevron-right"></i></span>
@@ -1158,5 +1163,38 @@
 <script src="/js/main.js"></script>
 
 
+
+  <!-- Inline fallback: hide loader regardless of external JS -->
+  <script>
+  (function() {
+    var el = document.getElementById('loader');
+    console.log('[loader] element:', !!el);
+    if (!el) return;
+    function hide(immediate) {
+      // If already hidden, skip
+      if (el.style.display === 'none' || el.classList.contains('hidden')) {
+        console.log('[loader] already hidden, skip');
+        return;
+      }
+      console.log('[loader] hiding now, immediate=' + immediate);
+      if (immediate) {
+        el.style.display = 'none';
+        window.dispatchEvent(new Event('resize'));
+      } else {
+        el.style.transition = 'opacity 0.6s ease';
+        el.style.opacity = '0';
+        setTimeout(function() {
+          el.style.display = 'none';
+          window.dispatchEvent(new Event('resize'));
+        }, 600);
+      }
+    }
+    // Try immediately (setTimeout 0 = after current execution context)
+    setTimeout(function() { hide(true); }, 0);
+    // Also try at 500ms, 1s, 2s, 3s, 4s
+    setTimeout(function() { hide(false); }, 500);
+    for (var i = 1; i <= 4; i++) setTimeout(function() { hide(false); }, i * 1000);
+  })();
+  </script>
 </body>
 </html>

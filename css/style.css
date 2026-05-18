@@ -1759,17 +1759,25 @@ img {
 .markdown-body h3 { font-size: 1.3rem; }
 .markdown-body h4 { font-size: 1.1rem; }
 
+.markdown-body h2::before,
+.markdown-body h3::before,
+.markdown-body h4::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.1em;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-radius: 3px;
+}
 .markdown-body h2::before {
-  content: '## ';
-  color: var(--color-primary);
+  background: var(--color-primary);
 }
 .markdown-body h3::before {
-  content: '### ';
-  color: var(--color-purple);
+  background: var(--color-purple);
 }
 .markdown-body h4::before {
-  content: '#### ';
-  color: var(--color-pink);
+  background: var(--color-pink);
 }
 
 .markdown-body p {
