@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="default">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="blog, tech, kawaii">
+  <meta name="description" content="A kawaii hacker blog">
+  <meta name="author" content="Math_Still">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <title>
+    Still&#39;blog
+  </title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Still&#39;blog">
+<meta property="og:url" content="https://math-still.github.io/tags/self-growth/index.html">
+<meta property="og:site_name" content="Still&#39;blog">
+<meta property="og:locale">
+<meta property="article:author" content="Math_Still">
+<meta name="twitter:card" content="summary">
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="kawaii-hacker-theme">
+  <!-- Loading Screen -->
+  <div id="loader" class="loader-screen">
+    <div class="loader-mascot">
+      <div class="chase-scene">
+        <!-- Progress Bar (at top) -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+          <span class="progress-label" id="progressLabel">0%</span>
+        </div>
+        <!-- Track -->
+        <div class="chase-track">
+          <div class="track-line"></div>
+          <div class="track-start">S</div>
+          <div class="track-end">🏁</div>
+        </div>
+        <!-- Catch message (above characters) -->
+        <div class="catch-message" id="catchMessage">🎉 Gotcha!</div>
+        <!-- Characters -->
+        <div class="chase-characters" id="chaseCharacters">
+          <!-- Dog (chasing, on left) -->
+          <div class="chase-runner dog-runner" id="dogRunner">
+            <div class="chase-move" id="dogMove">
+            <div class="pixel-dog">
+              <div class="dog-body">
+                <div class="dog-ear left"></div>
+                <div class="dog-ear right"></div>
+                <div class="dog-face">
+                  <div class="dog-eye left"></div>
+                  <div class="dog-eye right"></div>
+                  <div class="dog-eyebrow left"></div>
+                  <div class="dog-eyebrow right"></div>
+                  <div class="dog-snout">
+                    <div class="dog-nose"></div>
+                  </div>
+                  <div class="dog-tongue"></div>
+                </div>
+                <div class="dog-spot one"></div>
+                <div class="dog-spot two"></div>
+                <div class="dog-collar"></div>
+              </div>
+              <div class="dog-tail"></div>
+            </div>
+            <div class="runner-shadow"></div>
+            </div>
+          </div>
+          <!-- Cat (running ahead, on right) -->
+          <div class="chase-runner cat-runner" id="catRunner">
+            <div class="chase-move" id="catMove">
+            <div class="pixel-cat">
+              <div class="cat-body">
+                <div class="cat-ear left"></div>
+                <div class="cat-ear right"></div>
+                <div class="cat-face">
+                  <div class="cat-eye left"></div>
+                  <div class="cat-eye right"></div>
+                  <div class="cat-nose"></div>
+                  <div class="cat-mouth"></div>
+                  <div class="cat-whisker left top"></div>
+                  <div class="cat-whisker left middle"></div>
+                  <div class="cat-whisker left bottom"></div>
+                  <div class="cat-whisker right top"></div>
+                  <div class="cat-whisker right middle"></div>
+                  <div class="cat-whisker right bottom"></div>
+                </div>
+                <div class="cat-stripe"></div>
+                <div class="cat-stripe two"></div>
+              </div>
+              <div class="cat-tail"></div>
+            </div>
+            <div class="runner-shadow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loader-text">
+        <span class="loader-char" style="--i:1">L</span>
+        <span class="loader-char" style="--i:2">o</span>
+        <span class="loader-char" style="--i:3">a</span>
+        <span class="loader-char" style="--i:4">d</span>
+        <span class="loader-char" style="--i:5">i</span>
+        <span class="loader-char" style="--i:6">n</span>
+        <span class="loader-char" style="--i:7">g</span>
+        <span class="loader-char" style="--i:8">.</span>
+        <span class="loader-char" style="--i:9">.</span>
+        <span class="loader-char" style="--i:10">.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Code Rain Canvas Background -->
+  <canvas id="code-rain-canvas"></canvas>
+
+  <!-- Main Content Wrapper -->
+  <div class="content-wrapper">
+    <header class="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="/">
+      <span class="brand-icon">&gt;_</span>
+      <span class="brand-text">Still&#39;blog</span>
+    </a>
+
+    <nav class="navbar-links">
+      
+        
+          
+          <a class="navbar-link" href="/">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/archives/">
+            <i class="fa-solid fa-box-archive"></i>
+            <span>Archives</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/tags/">
+            <i class="fa-solid fa-tags"></i>
+            <span>Tags</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/categories/">
+            <i class="fa-solid fa-folder"></i>
+            <span>Categories</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/about/">
+            <i class="fa-solid fa-user"></i>
+            <span>About</span>
+          </a>
+        
+      
+    </nav>
+
+    <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle menu">
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="navbar-drawer" id="navbarDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">&gt;_ Menu</span>
+      <button class="drawer-close" id="drawerClose">&times;</button>
+    </div>
+    
+      
+        
+        <a class="drawer-link" href="/">
+          <i class="fa-solid fa-house"></i>
+          Home
+        </a>
+      
+        
+        <a class="drawer-link" href="/archives/">
+          <i class="fa-solid fa-box-archive"></i>
+          Archives
+        </a>
+      
+        
+        <a class="drawer-link" href="/tags/">
+          <i class="fa-solid fa-tags"></i>
+          Tags
+        </a>
+      
+        
+        <a class="drawer-link" href="/categories/">
+          <i class="fa-solid fa-folder"></i>
+          Categories
+        </a>
+      
+        
+        <a class="drawer-link" href="/about/">
+          <i class="fa-solid fa-user"></i>
+          About
+        </a>
+      
+    
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+</header>
+
+    <main class="main-content">
+      <section class="archive-section scroll-reveal">
+  <header class="archive-header">
+    <h1 class="archive-title">
+      <span class="title-prompt">&gt;</span> Tag: self-growth
+    </h1>
+    <p class="archive-desc">1 posts with this tag</p>
+  </header>
+
+  <div class="archive-list">
+    
+    <div class="archive-item scroll-reveal">
+      <time class="archive-date" datetime="2024-02-02">
+        <span class="archive-month">02</span>
+        <span class="archive-day">02</span>
+        <span class="archive-year">2024</span>
+      </time>
+      <div class="archive-info">
+        <h3 class="archive-post-title">
+          <a href="/2024/02/02/Personal_inner_System-The_iceberg_theory_of_the_Satya_model/">个人内在系统-萨提亚模式的冰山理论</a>
+        </h3>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+    </main>
+    <footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-info">
+      <span class="footer-copyright">
+        &copy; 2023 - 2026
+        <a href="/">Math_Still</a>
+      </span>
+      <span class="footer-sep">✦</span>
+      <span class="footer-powered">
+        Powered by Hexo <a href="https://hexo.io" target="_blank">Hexo</a>
+        &amp; <a href="https://github.com/still/kawaii-hacker" target="_blank">Kawaii Hacker</a>
+      </span>
+    </div>
+
+    
+    <div class="footer-runtime" id="footerRuntime">
+      <span class="runtime-label">✨ Running for </span>
+      <span class="runtime-value" id="runtimeDisplay">loading...</span>
+    </div>
+    
+
+    
+    <div class="footer-customize">
+      🌈 愿你每一天都充满惊喜
+    </div>
+    
+  </div>
+</footer>
+
+  </div>
+
+  <!-- Sparkle Cursor Effect -->
+  <div id="sparkle-container"></div>
+
+  
+<script src="/js/code-rain.js"></script>
+
+
+<script src="/js/kawaii.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

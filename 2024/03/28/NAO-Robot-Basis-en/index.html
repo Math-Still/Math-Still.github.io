@@ -1,334 +1,341 @@
 <!DOCTYPE html>
 <html lang="default">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="Hexo Theme Redefine">
-    
-    <meta name="author" content="Math_Still">
-    <!-- preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    
-    <!--- Seo Part-->
-    
-    <link rel="canonical" href="https://math-still.github.io/2024/03/28/nao-robot-basis-en/"/>
-    <meta name="robots" content="index,follow">
-    <meta name="googlebot" content="index,follow">
-    <meta name="revisit-after" content="1 days">
-    
-        <meta name="description" content="What is NAO?Nao is a commercially available humanoid robot built by Aldebaran who has 25 degrees of freedom and more than a hundred sensors throughout its body.It can imitate a variety of human moveme">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="blog, tech, kawaii">
+  <meta name="description" content="A kawaii hacker blog">
+  <meta name="author" content="Math_Still">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <title>
+    NAO robot operation basis - Still&#39;blog
+  </title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <meta name="description" content="What is NAO?Nao is a commercially available humanoid robot built by Aldebaran who has 25 degrees of freedom and more than a hundred sensors throughout its body.It can imitate a variety of human moveme">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NAO robot operation basis">
 <meta property="og:url" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/index.html">
 <meta property="og:site_name" content="Still&#39;blog">
 <meta property="og:description" content="What is NAO?Nao is a commercially available humanoid robot built by Aldebaran who has 25 degrees of freedom and more than a hundred sensors throughout its body.It can imitate a variety of human moveme">
 <meta property="og:locale">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/chest_button.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/flash_common.jpg">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_yellow_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_green_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
-<meta property="og:image" content="https://math-still.github.io/NAO_Robot_Basis_en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/chest_button.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/flash_common.jpg">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
+<meta property="og:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png">
 <meta property="article:published_time" content="2024-03-28T06:02:46.000Z">
-<meta property="article:modified_time" content="2024-03-28T06:19:17.200Z">
+<meta property="article:modified_time" content="2026-05-18T10:42:19.901Z">
 <meta property="article:author" content="Math_Still">
 <meta property="article:tag" content="NAO">
+<meta property="article:tag" content="robotics">
+<meta property="article:tag" content="embedded-systems">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://math-still.github.io/NAO_Robot_Basis_en/chest_button.png">
-    
-    
-    <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/images/ico.ico" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/ico.ico">
-    <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/images/ico.ico">
-    <!--- Page Info-->
-    
-    <title>
-        
-            NAO robot operation basis -
-        
-        Math_Still&#39;blog
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    
-<link rel="stylesheet" href="/assets/fonts.css">
-
-    <!--- Font Part-->
-    
-    
-    
-    
-
-    <!--- Inject Part-->
-    
-    <script id="hexo-configurations">
-    let Global = window.Global || {};
-    Global.hexo_config = {"hostname":"math-still.github.io","root":"/","language":"default"};
-    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"static","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"She patiently awaits my arrival.","subtitle":{"text":["不乱于心,不困于情,不畏将来,不念过往","一切的相遇即是重逢","蓑烟雨任平生，也无风雨也无晴","浮生若梦，为欢几何","日落尤为温柔,人间皆是浪漫","夏天会周而复始，该相逢的人会再相逢"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"links":{"github":"https://github.com/Math-Still/","instagram":null,"zhihu":null,"twitter":null,"email":"1742996732@qq.com"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
-    Global.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
-    Global.data_config = {"masonry":false};
-  </script>
-    
-    <!--- Fontawesome Part-->
-    
-<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/brands.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/solid.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/regular.min.css">
-
-    
-    
-    
-    
+<meta name="twitter:image" content="https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/chest_button.png">
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-
-<body>
-<div class="progress-bar-container">
-    
-
-    
-        <span class="pjax-progress-bar"></span>
-        <span class="pjax-progress-icon">
-            <i class="fa-solid fa-circle-notch fa-spin"></i>
-        </span>
-    
-</div>
-
-
-<main class="page-container">
-
-    
-
-    <div class="main-content-container">
-
-        <div class="main-content-header">
-            <header class="navbar-container">
-    
-    <div class="navbar-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                
-                Math_Still&#39;blog
-                
-            </a>
+<body class="kawaii-hacker-theme">
+  <!-- Loading Screen -->
+  <div id="loader" class="loader-screen">
+    <div class="loader-mascot">
+      <div class="chase-scene">
+        <!-- Progress Bar (at top) -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+          <span class="progress-label" id="progressLabel">0%</span>
         </div>
-
-        <div class="right">
-            <!-- PC -->
-            <div class="desktop">
-                <ul class="navbar-list">
-                    
-                        
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-house"></i>
-                                        
-                                        首頁
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                    
-                </ul>
-            </div>
-            <!-- Mobile -->
-            <div class="mobile">
-                
-                <div class="icon-item navbar-bar">
-                    <div class="navbar-bar-middle"></div>
+        <!-- Track -->
+        <div class="chase-track">
+          <div class="track-line"></div>
+          <div class="track-start">S</div>
+          <div class="track-end">🏁</div>
+        </div>
+        <!-- Catch message (above characters) -->
+        <div class="catch-message" id="catchMessage">🎉 Gotcha!</div>
+        <!-- Characters -->
+        <div class="chase-characters" id="chaseCharacters">
+          <!-- Dog (chasing, on left) -->
+          <div class="chase-runner dog-runner" id="dogRunner">
+            <div class="chase-move" id="dogMove">
+            <div class="pixel-dog">
+              <div class="dog-body">
+                <div class="dog-ear left"></div>
+                <div class="dog-ear right"></div>
+                <div class="dog-face">
+                  <div class="dog-eye left"></div>
+                  <div class="dog-eye right"></div>
+                  <div class="dog-eyebrow left"></div>
+                  <div class="dog-eyebrow right"></div>
+                  <div class="dog-snout">
+                    <div class="dog-nose"></div>
+                  </div>
+                  <div class="dog-tongue"></div>
                 </div>
+                <div class="dog-spot one"></div>
+                <div class="dog-spot two"></div>
+                <div class="dog-collar"></div>
+              </div>
+              <div class="dog-tail"></div>
             </div>
+            <div class="runner-shadow"></div>
+            </div>
+          </div>
+          <!-- Cat (running ahead, on right) -->
+          <div class="chase-runner cat-runner" id="catRunner">
+            <div class="chase-move" id="catMove">
+            <div class="pixel-cat">
+              <div class="cat-body">
+                <div class="cat-ear left"></div>
+                <div class="cat-ear right"></div>
+                <div class="cat-face">
+                  <div class="cat-eye left"></div>
+                  <div class="cat-eye right"></div>
+                  <div class="cat-nose"></div>
+                  <div class="cat-mouth"></div>
+                  <div class="cat-whisker left top"></div>
+                  <div class="cat-whisker left middle"></div>
+                  <div class="cat-whisker left bottom"></div>
+                  <div class="cat-whisker right top"></div>
+                  <div class="cat-whisker right middle"></div>
+                  <div class="cat-whisker right bottom"></div>
+                </div>
+                <div class="cat-stripe"></div>
+                <div class="cat-stripe two"></div>
+              </div>
+              <div class="cat-tail"></div>
+            </div>
+            <div class="runner-shadow"></div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="loader-text">
+        <span class="loader-char" style="--i:1">L</span>
+        <span class="loader-char" style="--i:2">o</span>
+        <span class="loader-char" style="--i:3">a</span>
+        <span class="loader-char" style="--i:4">d</span>
+        <span class="loader-char" style="--i:5">i</span>
+        <span class="loader-char" style="--i:6">n</span>
+        <span class="loader-char" style="--i:7">g</span>
+        <span class="loader-char" style="--i:8">.</span>
+        <span class="loader-char" style="--i:9">.</span>
+        <span class="loader-char" style="--i:10">.</span>
+      </div>
     </div>
+  </div>
 
-    <!-- Mobile drawer -->
-    <div class="navbar-drawer">
-        <ul class="drawer-navbar-list">
-            
-                
-                    <li class="drawer-navbar-item flex-center">
-                        <a class="" 
-                        href="/"  >
-                             
-                                
-                                    <i class="fa-regular fa-house"></i>
-                                
-                                首頁
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
+  <!-- Code Rain Canvas Background -->
+  <canvas id="code-rain-canvas"></canvas>
 
-        </ul>
+  <!-- Main Content Wrapper -->
+  <div class="content-wrapper">
+    <header class="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="/">
+      <span class="brand-icon">&gt;_</span>
+      <span class="brand-text">Still&#39;blog</span>
+    </a>
+
+    <nav class="navbar-links">
+      
+        
+          
+          <a class="navbar-link" href="/">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/archives/">
+            <i class="fa-solid fa-box-archive"></i>
+            <span>Archives</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/tags/">
+            <i class="fa-solid fa-tags"></i>
+            <span>Tags</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/categories/">
+            <i class="fa-solid fa-folder"></i>
+            <span>Categories</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/about/">
+            <i class="fa-solid fa-user"></i>
+            <span>About</span>
+          </a>
+        
+      
+    </nav>
+
+    <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle menu">
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="navbar-drawer" id="navbarDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">&gt;_ Menu</span>
+      <button class="drawer-close" id="drawerClose">&times;</button>
     </div>
-
-    <div class="window-mask"></div>
-
+    
+      
+        
+        <a class="drawer-link" href="/">
+          <i class="fa-solid fa-house"></i>
+          Home
+        </a>
+      
+        
+        <a class="drawer-link" href="/archives/">
+          <i class="fa-solid fa-box-archive"></i>
+          Archives
+        </a>
+      
+        
+        <a class="drawer-link" href="/tags/">
+          <i class="fa-solid fa-tags"></i>
+          Tags
+        </a>
+      
+        
+        <a class="drawer-link" href="/categories/">
+          <i class="fa-solid fa-folder"></i>
+          Categories
+        </a>
+      
+        
+        <a class="drawer-link" href="/about/">
+          <i class="fa-solid fa-user"></i>
+          About
+        </a>
+      
+    
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
 </header>
 
-
-        </div>
-
-        <div class="main-content-body">
-
-            
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            
-            
-                <div class="article-title">
-                    <h1 class="article-title-regular">NAO robot operation basis</h1>
-                </div>
-            
-                
-            
-
-            
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/images/redefine-avatar.jpg">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">Math_Still</span>
-                            
-                                <span class="author-label">Lv2</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-03-28 14:02:46</span>
-        <span class="mobile">2024-03-28 14:02</span>
-        <span class="hover-info">撰寫</span>
-    </span>
+    <main class="main-content">
+      <article class="post-article scroll-reveal">
+  <header class="post-header">
+    <h1 class="post-title">NAO robot operation basis</h1>
+    <div class="post-meta">
+      <span class="post-date">
+        <i class="fa-regular fa-calendar"></i> 2024-03-28
+      </span>
+      
+      <span class="post-updated">
+        <i class="fa-regular fa-pen-to-square"></i> Updated: 2026-05-18
+      </span>
+      
+      <span class="post-words">
+        <i class="fa-regular fa-file-lines"></i> ~3851 words
+      </span>
+      
+      <span class="post-categories">
+        <i class="fa-regular fa-folder-open"></i>
+        
+        <a href="/categories/Robotics/">Robotics</a>
+        
+      </span>
+      
+    </div>
     
-        <span class="article-date article-meta-item">
-            <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-03-28 14:19:17</span>
-            <span class="mobile">2024-03-28 14:19</span>
-            <span class="hover-info">更新</span>
-        </span>
+    <div class="post-tags">
+      
+      <a class="post-tag" href="/tags/NAO/">#NAO</a>
+      
+      <a class="post-tag" href="/tags/robotics/">#robotics</a>
+      
+      <a class="post-tag" href="/tags/embedded-systems/">#embedded-systems</a>
+      
+    </div>
     
+  </header>
 
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/NAO/">NAO</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content markdown-body">
-                <h2 id="What-is-NAO"><a href="#What-is-NAO" class="headerlink" title="What is NAO?"></a>What is NAO?</h2><p>Nao is a commercially available humanoid robot built by Aldebaran who has 25 degrees of freedom and more than a hundred sensors throughout its body.It can imitate a variety of human movements jump a variety of dances, its hands can grab 300 grams of heavy objects, equipped with binocular vision system can do face tracking and object recognition, chest equipped with ultrasonic sensors and feet equipped with collision sensors, can detect obstacles ahead, make the corresponding road strength planning. The soles of the feet are equipped with pressure sensors to walk on uneven ground and automatically adjust the center of gravity. Equipped with microphones and speakers can do sound source location and human-machine voice exchange. NAO is equipped with a voice module that can speak multiple languages, such as Chinese, English, French, Japanese, etc. It can be programmed on multiple platforms such as Linux, Microsoft, or MacOS.</p>
+  <div class="post-content markdown-body">
+    <h2 id="What-is-NAO"><a href="#What-is-NAO" class="headerlink" title="What is NAO?"></a>What is NAO?</h2><p>Nao is a commercially available humanoid robot built by Aldebaran who has 25 degrees of freedom and more than a hundred sensors throughout its body.It can imitate a variety of human movements jump a variety of dances, its hands can grab 300 grams of heavy objects, equipped with binocular vision system can do face tracking and object recognition, chest equipped with ultrasonic sensors and feet equipped with collision sensors, can detect obstacles ahead, make the corresponding road strength planning. The soles of the feet are equipped with pressure sensors to walk on uneven ground and automatically adjust the center of gravity. Equipped with microphones and speakers can do sound source location and human-machine voice exchange. NAO is equipped with a voice module that can speak multiple languages, such as Chinese, English, French, Japanese, etc. It can be programmed on multiple platforms such as Linux, Microsoft, or MacOS.</p>
 <h2 id="The-basic-step-in-using-the-nao-robot"><a href="#The-basic-step-in-using-the-nao-robot" class="headerlink" title="The basic step in using the nao robot."></a>The basic step in using the nao robot.</h2><h3 id="Requires"><a href="#Requires" class="headerlink" title="Requires"></a>Requires</h3><p>During the first steps with NAO, you will need:</p>
 <table>
 <thead>
@@ -360,7 +367,7 @@
 <li>Tap the Chest Button for 0.5 seconds.</li>
 <li>Waiting…….</li>
 </ol>
-<p><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/chest_button.png"></p>
+<p><img src="/2024/03/28/NAO-Robot-Basis-en/chest_button.png"></p>
 <p><strong>The process is as follows:</strong></p>
 <p>The Eye,the chest and the top skull LEDs fade in, smoothly and repeatedly, from Black to White.</p>
 <p>A progress bar is displayed on the Ear LEDs:</p>
@@ -447,7 +454,7 @@
 <li>A fully charged robot</li>
 <li><strong>NAO</strong> system image(xxx.opn)</li>
 <li><strong>Choregraphe</strong> APP or an USB which larger or equal to 512MB.</li>
-<li><a class="link" target="_blank" rel="noopener" href="https://www.aldebaran.com/en/support/nao-6/downloads-softwares">NAO Flasher <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>(If you use storage containers)</li>
+<li><a target="_blank" rel="noopener" href="https://www.aldebaran.com/en/support/nao-6/downloads-softwares">NAO Flasher</a>(If you use storage containers)</li>
 </ul>
 <h3 id="Flashing-USB-recommend"><a href="#Flashing-USB-recommend" class="headerlink" title="Flashing(USB,recommend)"></a>Flashing(USB,recommend)</h3><h4 id="Requires-1"><a href="#Requires-1" class="headerlink" title="Requires"></a>Requires</h4><table>
 <thead>
@@ -459,7 +466,7 @@
 <td align="left">A fully charged robot</td>
 </tr>
 <tr>
-<td align="left">Get a <strong>USB</strong> stick:<br>- unformatted,<br>- larger or equal to 512MB.If necessary</td>
+<td align="left">Get a <strong>USB</strong> stick:<br/>- unformatted,<br/>- larger or equal to 512MB.If necessary</td>
 </tr>
 <tr>
 <td align="left">Get a <a target="_blank" rel="noopener" href="https://www.aldebaran.com/en/support/nao-6/downloads-softwares"><strong>NAO Flasher</strong></a> according to the Operating System of your computer</td>
@@ -481,7 +488,7 @@
 </tr>
 <tr>
 <td align="left">2.</td>
-<td align="left">Launch the <strong>flasher</strong> executable.(Use macos as an example)<img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/flash_common.jpg"></td>
+<td align="left">Launch the <strong>flasher</strong> executable.(Use macos as an example)<img src="/2024/03/28/NAO-Robot-Basis-en/flash_common.jpg"></td>
 </tr>
 <tr>
 <td align="left">3.</td>
@@ -535,22 +542,22 @@
 <li><p>Open your CLI as an administrator.</p>
 </li>
 <li><p>Use the following command to check your disk insertion and find your target disk:(Assume your target is X)</p>
- <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure></div>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>The fdisk interface is displayed:</p>
- <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sdX</span><br><span class="line"><span class="comment">#-----------------#</span></span><br><span class="line"><span class="comment"># After entering the fdisk interface, enter the following commands in sequence:</span></span><br><span class="line">d 	<span class="comment"># Delete a partition</span></span><br><span class="line">[Partition ID] 	<span class="comment"># Number of the partition to be deleted</span></span><br><span class="line">w 	<span class="comment"># Writes the partition table to disk and exits</span></span><br></pre></td></tr></table></figure></div></li>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sdX</span><br><span class="line"><span class="comment">#-----------------#</span></span><br><span class="line"><span class="comment"># After entering the fdisk interface, enter the following commands in sequence:</span></span><br><span class="line">d 	<span class="comment"># Delete a partition</span></span><br><span class="line">[Partition ID] 	<span class="comment"># Number of the partition to be deleted</span></span><br><span class="line">w 	<span class="comment"># Writes the partition table to disk and exits</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h4 id="MacOS"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS</h4><ul>
 <li><p>Open your CLI as an administrator.</p>
 </li>
 <li><p>Use the following command to check your disk insertion and find your target disk:(Assume your target is X)</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil list</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil list</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>You can also check the disk status further:</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil info diskX</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil info diskX</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Unmount all partitions</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">diskutil unmount /dev/diskX</span><br><span class="line">diskutil unmountDisk /dev/diskX</span><br></pre></td></tr></table></figure></div></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">diskutil unmount /dev/diskX</span><br><span class="line">diskutil unmountDisk /dev/diskX</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>or Use the system disk management tool to uninstall it.</p>
 <h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><ul>
@@ -593,12 +600,12 @@
 <tbody><tr>
 <td align="left">Press once</td>
 <td align="left">Turn on</td>
-<td align="left"><a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao-turn-on.html#nao-turn-on">Turning NAO on <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao-turn-on.html#nao-turn-on">Turning NAO on</a></td>
 </tr>
 <tr>
 <td align="left">Press and hold for 4 seconds</td>
 <td align="left">Update the firmware</td>
-<td align="left"><a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/upgrade_nao.html#software-update">Upgrading my NAO <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/upgrade_nao.html#software-update">Upgrading my NAO</a></td>
 </tr>
 </tbody></table>
 <h4 id="When-NAO-is-on"><a href="#When-NAO-is-on" class="headerlink" title="When NAO is on"></a>When NAO is on</h4><table>
@@ -612,7 +619,7 @@
 <tbody><tr>
 <td align="left">Press once</td>
 <td align="left">Get IP address,and Read notifications</td>
-<td align="left"><a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao_request.html#nao-request">Requesting technical information <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao_request.html#nao-request">Requesting technical information</a></td>
 </tr>
 <tr>
 <td align="left">Press again</td>
@@ -622,17 +629,17 @@
 <tr>
 <td align="left">Press twice</td>
 <td align="left">Set the life off and on</td>
-<td align="left"><a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao_freeze.html#nao-freeze">Switching Autonomous life on and off <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao_freeze.html#nao-freeze">Switching Autonomous life on and off</a></td>
 </tr>
 <tr>
 <td align="left">Press and hold for 3 seconds</td>
 <td align="left">Shut down</td>
-<td align="left"><a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao-turn-off.html#nao-turn-off">Turning NAO off <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao-turn-off.html#nao-turn-off">Turning NAO off</a></td>
 </tr>
 <tr>
 <td align="left">Press and hold for 8 seconds</td>
 <td align="left">Request a Forced switch off</td>
-<td align="left"><a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao-turn-off.html#emergency-turn-off">Emergency turn off <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></td>
+<td align="left"><a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/nao-turn-off.html#emergency-turn-off">Emergency turn off</a></td>
 </tr>
 </tbody></table>
 <h3 id="Chest-LED-Note"><a href="#Chest-LED-Note" class="headerlink" title="Chest LED Note"></a>Chest LED Note</h3><table>
@@ -643,19 +650,19 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"> Green</td>
+<td align="center"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"> Green</td>
 <td>NAO gives you some feed-back by an Info notification about an ongoing action.</td>
 </tr>
 <tr>
-<td align="center"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"> Yellow</td>
+<td align="center"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"> Yellow</td>
 <td>Warning notification occurs when an issue requires your attention and&#x2F;or action.<br>NAO is still usable but, it may either run in a degraded mode in which some features may be not available or it may soon become unusable if you don’t solve the problem.</td>
 </tr>
 <tr>
-<td align="center"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"> Red</td>
+<td align="center"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"> Red</td>
 <td>Error notification occurs when one or all functionality(ies) of NAO become unusable.</td>
 </tr>
 </tbody></table>
-<h3 id="List-of-notifications"><a href="#List-of-notifications" class="headerlink" title="List of notifications"></a><a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/voice_notifications_nao.html#notifications-nao">List of notifications <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h4 id="Boot-process"><a href="#Boot-process" class="headerlink" title="Boot process"></a>Boot process</h4><table>
+<h3 id="List-of-notifications"><a href="#List-of-notifications" class="headerlink" title="List of notifications"></a><a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/voice_notifications_nao.html#notifications-nao">List of notifications</a></h3><h4 id="Boot-process"><a href="#Boot-process" class="headerlink" title="Boot process"></a>Boot process</h4><table>
 <thead>
 <tr>
 <th align="left">#</th>
@@ -668,163 +675,163 @@
 <td align="left">10</td>
 <td align="left">I canceled my system update. The system image was invalid. I am still running version &lt;*x.y.z*&gt;.</td>
 <td align="left">The file containing the system image seems unusable, try again to retrieve the relevant system file.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">11</td>
 <td align="left">I canceled my system update. The system image was invalid. I am still running version &lt;*x.y.z*&gt;.</td>
 <td align="left">The file containing the system image seems unusable, try again to retrieve the relevant system file.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">100</td>
 <td align="left">I successfully updated my system.I am now running version &lt;*x.y.z*&gt;.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">101</td>
 <td align="left">I canceled my system update. The system image was not compatible with my upgrade program.I am still running version &lt;*x.y.z*&gt;.</td>
 <td align="left">The system image used for the update is not compatible with your robot hardware. Check what system image version supports your robot version and model, and retry with one of the supported system image version.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">102</td>
 <td align="left">I canceled my system update. The system image was not compatible with my processor. I am still running version &lt;*x.y.z*&gt;.</td>
 <td align="left">The system image used for the update is not compatible with your robot hardware. Check what system image version supports your robot version and model, and retry with one of the supported system image version.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">103</td>
 <td align="left">I canceled my system update. The system image was not compatible with my body. I am still running version &lt;*x.y.z*&gt;.</td>
 <td align="left">The system image used for the update is not compatible with your robot hardware. Check what system image version supports your robot version and model, and retry with one of the supported system image version.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">104</td>
 <td align="left">I canceled my system update. The system image was corrupted. I am still running version &lt;*x.y.z*&gt;.</td>
 <td align="left">The system image is corrupted. Try downloading it again then restart the update process.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">105</td>
 <td align="left">I canceled my system update.My current system seems corrupted. I am still running version &lt;*x.y.z*&gt;.</td>
 <td align="left">The update program cannot recognize your robot hardware. Some changes done on the hardware damage it. Contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">110</td>
 <td align="left">I could not update my system. Try to update me again.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">111</td>
 <td align="left">I could not update my system. Try to update me again.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">120</td>
 <td align="left">I successfully completed my factory reset.All my data and settings have been reset.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">200</td>
 <td align="left">I couldn’t complete my factory reset.I may still have some data or settings from before.Retry a factory reset to remove all my data and settings.</td>
 <td align="left">Retry the update with factory reset enabled.If the problem persists, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">201</td>
 <td align="left">I couldn’t complete my factory reset.I may still have some data or settings from before.Retry a factory reset to remove all my data and settings.</td>
 <td align="left">Retry the update with factory reset enabled.If the problem persists, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">202</td>
 <td align="left">I couldn’t complete my factory reset.I may still have some data or settings from before.Retry a factory reset to remove all my data and settings.</td>
 <td align="left">Retry the update with factory reset enabled.If the problem persists, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">203</td>
 <td align="left">I successfully completed my factory reset. All my data and settings have been reset.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">204</td>
 <td align="left">I can’t access some of my data.My user partition seems corrupted. Please try to reboot me to fix the problem.</td>
 <td align="left">The memory space dedicated to the user is not accessible due to some hardware failure.Try to reboot the robot.If the problem persists, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">205</td>
 <td align="left">I can’t access some of my data.My user partition seems corrupted. Please try to reboot me to fix the problem.</td>
 <td align="left">The memory space dedicated to the user is not accessible due to some hardware failure.Try to reboot the robot.If the problem persists, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">214</td>
 <td align="left">I can’t access some of my data.My internal partition seems corrupted. Please try to reboot me to fix the problem.</td>
 <td align="left">The memory space dedicated to internal usage is not accessible due to some hardware failure.Try to reboot the robot.If the problem persists, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">215</td>
 <td align="left">I can’t access some of my data.My internal partition seems corrupted. Please try to reboot me to fix the problem.</td>
 <td align="left">The memory space dedicated to internal usage is not accessible due to some hardware failure.Try to reboot the robot.If the problem persists, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">400</td>
 <td align="left">I can’t move. My current system is not compatible with my body. Retry to update me with a compatible system image.</td>
 <td align="left">The current system image of your robot is not compatible with your robot hardware. Check what system image version supports your robot version and model, and retry with one of the supported system image version.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">401</td>
 <td align="left">I can’t move. My current system is way too old for my body. Retry to update me with a more recent system image.</td>
 <td align="left">The current system image of your robot is not compatible with your robot hardware. Check what system image version supports your robot version and model, and retry with one of the supported system image version.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">402</td>
 <td align="left">I can’t move. My current system is way too recent for my old body. Retry to update me with a less recent system image.</td>
 <td align="left">The current system image of your robot is not compatible with your robot hardware. Check what system image version supports your robot version and model, and retry with one of the supported system image version.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">404</td>
 <td align="left">I can’t move. I can’t access my body. Please try to reboot me to fix the problem.</td>
 <td align="left">The head does not find or recognize its body. The robot is unusable.Try to reboot to fix this.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">405</td>
 <td align="left">I updated some of my firmwares.Please reboot me to finish the update.</td>
-<td align="left">Some new firmwares have been installed but will not be enabled until a reboot of the robot.<br><br>Turn off the robot using the standard procedure, then start it again.<br><br>If this warning occurs on every boot, it means:<br><br>either some hardware is too old and cannot be updated;<br>or some hardware is broken and cannot be updated.<br>In either case, you should contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left">Some new firmwares have been installed but will not be enabled until a reboot of the robot.<br/><br/>Turn off the robot using the standard procedure, then start it again.<br/><br/>If this warning occurs on every boot, it means:<br/><br/>either some hardware is too old and cannot be updated;<br/>or some hardware is broken and cannot be updated.<br/>In either case, you should contact the support.</td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">500</td>
 <td align="left">I can’t connect to the cloud services. My head identifier is missing. Please contact support.</td>
 <td align="left">Contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">501</td>
 <td align="left">I can’t connect to the cloud services. My system date is wrong. Please ensure that I am connected to the Internet and reboot me to fix the problem.</td>
 <td align="left">Make sure your robot is connected to the Internet then restart it to update the date.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">600</td>
 <td align="left">I’m not safe like this. Please help me sit or crouch.</td>
 <td align="left">The robot is not in a good position to start autonomous life. Put it in sitting or crouching position and it will start life.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 </tbody></table>
 <h4 id="Diagnosis-NAO"><a href="#Diagnosis-NAO" class="headerlink" title="Diagnosis - NAO"></a>Diagnosis - NAO</h4><table>
@@ -838,87 +845,87 @@
 </thead>
 <tbody><tr>
 <td align="left">710</td>
-<td align="left">I can’t move anymore. I detected an error on <X> of my vital devices: &lt;*list of devices*&gt;. Please try to reboot me to fix the problem.</X></td>
-<td align="left">This will have an impact on your robot,see <a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/naoqi/motion/reflexes-diagnosis.html#reflexes-diagnosis">Diagnosis effect <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.If the problem persists after a reboot, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left">I can’t move anymore. I detected an error on <X> of my vital devices: &lt;*list of devices*&gt;. Please try to reboot me to fix the problem.</td>
+<td align="left">This will have an impact on your robot,see <a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/naoqi/motion/reflexes-diagnosis.html#reflexes-diagnosis">Diagnosis effect</a>.If the problem persists after a reboot, contact the support.</td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">711</td>
-<td align="left">I detected an error on <X> of my devices: &lt;*list of devices*&gt;. Please try to reboot me to fix the problem.</X></td>
-<td align="left">This will have an impact on your robot,see <a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/naoqi/motion/reflexes-diagnosis.html#reflexes-diagnosis">Diagnosis effect <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.If the problem persists after a reboot, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left">I detected an error on <X> of my devices: &lt;*list of devices*&gt;. Please try to reboot me to fix the problem.</td>
+<td align="left">This will have an impact on your robot,see <a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/naoqi/motion/reflexes-diagnosis.html#reflexes-diagnosis">Diagnosis effect</a>.If the problem persists after a reboot, contact the support.</td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">712</td>
 <td align="left">I detected a system error: one of my software does not run properly. Please try to reboot me to fix the problem.</td>
 <td align="left">If the problem persists after a reboot,contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">713</td>
-<td align="left">I can’t move anymore. I detected an error on <X> of my vital devices: &lt;*list of devices*&gt;. Please try to reboot me to fix the problem.</X></td>
-<td align="left">This will have an impact on your robot, see <a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/naoqi/motion/reflexes-diagnosis.html#reflexes-diagnosis">Diagnosis effect <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.If the problem persists after a reboot, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left">I can’t move anymore. I detected an error on <X> of my vital devices: &lt;*list of devices*&gt;. Please try to reboot me to fix the problem.</td>
+<td align="left">This will have an impact on your robot, see <a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/naoqi/motion/reflexes-diagnosis.html#reflexes-diagnosis">Diagnosis effect</a>.If the problem persists after a reboot, contact the support.</td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">714</td>
-<td align="left">I detected an error on <X> of my devices: &lt;*list of devices*&gt;. Please try to reboot me to fix the problem.</X></td>
-<td align="left">This will have an impact on your robot, see <a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/naoqi/motion/reflexes-diagnosis.html#reflexes-diagnosis">Diagnosis effect <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.If the problem persists after a reboot, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left">I detected an error on <X> of my devices: &lt;*list of devices*&gt;. Please try to reboot me to fix the problem.</td>
+<td align="left">This will have an impact on your robot, see <a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/naoqi/motion/reflexes-diagnosis.html#reflexes-diagnosis">Diagnosis effect</a>.If the problem persists after a reboot, contact the support.</td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">720</td>
-<td align="left">Some of my motors are getting hot in my <chainName wheel or sensor>. I will need to rest soon.</chainName></td>
+<td align="left">Some of my motors are getting hot in my <chainName wheel or sensor>. I will need to rest soon.</td>
 <td align="left">Robot motors are getting hot or are already too hot to be able to move. Put the robot in crouch and unstiffened and wait for few tens of minutes to let its motors cool down before you can use it again.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">721</td>
-<td align="left">A part of my body cannot move anymore. Some of my motors are too hot in my <limbName>.Please let me rest for a while.</limbName></td>
+<td align="left">A part of my body cannot move anymore. Some of my motors are too hot in my <limbName>.Please let me rest for a while.</td>
 <td align="left">Robot motors are getting hot or are already too hot to be able to move. Put the robot in crouch and unstiffened and wait for few tens of minutes to let its motors cool down before you can use it again.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">722</td>
-<td align="left">I can’t move anymore. Some of my motors are too hot in my <limbName>. Please let me rest for a while.</limbName></td>
+<td align="left">I can’t move anymore. Some of my motors are too hot in my <limbName>. Please let me rest for a while.</td>
 <td align="left">Robot motors are getting hot or are already too hot to be able to move. Put the robot in crouch and unstiffened and wait for few tens of minutes to let its motors cool down before you can use it again.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">723</td>
-<td align="left">Some of my motors are getting hot in my <chainName wheel or sensor>. I will need to rest soon.</chainName></td>
+<td align="left">Some of my motors are getting hot in my <chainName wheel or sensor>. I will need to rest soon.</td>
 <td align="left">Robot motors are getting hot or are already too hot to be able to move. Put the robot in crouch and unstiffened and wait for few tens of minutes to let its motors cool down before you can use it again.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">724</td>
-<td align="left">Some of my motors are too hot in my <limbName>. Please let me rest for a while.</limbName></td>
+<td align="left">Some of my motors are too hot in my <limbName>. Please let me rest for a while.</td>
 <td align="left">Robot motors are getting hot or are already too hot to be able to move. Put the robot in crouch and unstiffened and wait for few tens of minutes to let its motors cool down before you can use it again.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">725</td>
 <td align="left">My memory seems full. Please reboot me to fix the problem.</td>
 <td align="left">Robot RAM is full. Reboot the robot.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">726</td>
 <td align="left">My memory seems full. Please remove some applications or data to make some room.</td>
 <td align="left">Robot user partition is full. Remove some applications or some data.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">730</td>
 <td align="left">My head processor is getting hot. I will need to rest soon.</td>
 <td align="left">Robot head processor is getting or is already too hot. Shut down the robot for few tens of minutes.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">731</td>
 <td align="left">My head processor is too hot. Please let me rest for a while.</td>
 <td align="left">Robot head processor is getting or is already too hot. Shut down the robot for few tens of minutes.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 </tbody></table>
 <h4 id="Battery-notifications"><a href="#Battery-notifications" class="headerlink" title="Battery - notifications"></a>Battery - notifications</h4><table>
@@ -934,43 +941,43 @@
 <td align="left">800</td>
 <td align="left">I can’t access my battery. Please try to reboot me to fix the problem.</td>
 <td align="left">If the problem persists after a reboot, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">801</td>
 <td align="left">My battery will soon need charging.</td>
-<td align="left">The battery level reached 30%. See: <a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/battery-charging.html#charging-battery-nao">Charging the battery <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left">The battery level reached 30%. See: <a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/battery-charging.html#charging-battery-nao">Charging the battery</a>.</td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">802</td>
 <td align="left">My battery needs urgent charging.</td>
-<td align="left">The battery level reached 15%. See: <a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/battery-charging.html#charging-battery-nao">Charging the battery <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left">The battery level reached 15%. See: <a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/battery-charging.html#charging-battery-nao">Charging the battery</a>.</td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 <tr>
 <td align="left">803</td>
 <td align="left">My battery is totally empty. I’m shutting down.</td>
-<td align="left">The robot ran out of battery so it shut down. See: <a class="link" target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/battery-charging.html#charging-battery-nao">Charging the battery <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left">The robot ran out of battery so it shut down. See: <a target="_blank" rel="noopener" href="http://doc.aldebaran.com/2-8/family/nao_user_guide/battery-charging.html#charging-battery-nao">Charging the battery</a>.</td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">805</td>
 <td align="left">My battery is now fully charged.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">806</td>
 <td align="left">I detected an unusual temperature on my battery. I’m shutting down. Please let me rest for at least 2 hours before rebooting me.</td>
 <td align="left">If the problem persists after 2 hours with the robot off, contact the support.</td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">810</td>
 <td align="left">I failed to leave my charging station. Please help me to move away from it.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 </tbody></table>
 <h4 id="NAO-Apps-Store-notifications"><a href="#NAO-Apps-Store-notifications" class="headerlink" title="NAO Apps Store - notifications"></a>NAO Apps Store - notifications</h4><table>
@@ -986,25 +993,25 @@
 <td align="left">830</td>
 <td align="left">I have installed &lt;*Name of the applications*&gt;.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">832</td>
 <td align="left">I have updated &lt;*Name of the applications*&gt;.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">834</td>
 <td align="left">I have removed the application &lt;*Name of the applications*&gt;.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">840</td>
 <td align="left">I have downloaded system version &lt;*x.y.z*&gt;. Reboot me to install it.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_yellow_led.png" alt="yellow_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_yellow_led.png" alt="yellow_chest"></td>
 </tr>
 </tbody></table>
 <h4 id="Robot-backup-tool-notifications"><a href="#Robot-backup-tool-notifications" class="headerlink" title="Robot backup tool - notifications"></a>Robot backup tool - notifications</h4><table>
@@ -1020,430 +1027,135 @@
 <td align="left">900</td>
 <td align="left">I successfully backed up my data.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">901</td>
 <td align="left">I couldn’t back up my data. My system version is not compatible with this operation. Please try to update me with a more recent version and try again.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">902</td>
 <td align="left">I couldn’t back up my data. The files were not readable. Please try again.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">903</td>
 <td align="left">I couldn’t back up my data. Connection with back up application was interrupted. Please ensure that I am connected to the network and try again.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">920</td>
 <td align="left">I successfully restored my data.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_green_led.png" alt="green_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_green_led.png" alt="green_chest"></td>
 </tr>
 <tr>
 <td align="left">921</td>
 <td align="left">I couldn’t restore my data. My system version is not compatible with this operation. Please try to update me with a more recent version and try again.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">922</td>
 <td align="left">I couldn’t restore my data. The files were not writable. Please try again.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 <tr>
 <td align="left">923</td>
 <td align="left">I couldn’t restore my data. Connection with back up application was interrupted. Please ensure that I am connected to the network and try again.</td>
 <td align="left"></td>
-<td align="left"><img lazyload src="/images/loading.svg" data-src="/./NAO_Robot_Basis_en/gs_red_led.png" alt="red_chest"></td>
+<td align="left"><img src="/2024/03/28/NAO-Robot-Basis-en/gs_red_led.png" alt="red_chest"></td>
 </tr>
 </tbody></table>
 
-            </div>
+  </div>
 
-            
-                <div class="post-copyright-info">
-                    <div class="article-copyright-info-container">
-    <ul>
-        <li><strong>標題:</strong> NAO robot operation basis</li>
-        <li><strong>作者:</strong> Math_Still</li>
-        <li><strong>撰寫于:</strong> 2024-03-28 14:02:46</li>
-        
-            <li>
-                <strong>更新于:</strong> 2024-03-28 14:19:17
-            </li>
-        
-        <li>
-            <strong>連結:</strong> https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/
-        </li>
-        <li>
-            <strong>版權宣告:</strong> 本作品采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
-        </li>
-    </ul>
-</div>
+  <!-- Kawaii Animal at End of Article -->
+  
+  <div class="post-animal" id="postAnimal">
+    <div class="animal-emoji" id="animalEmoji">🐱</div>
+    <div class="animal-message" id="animalMessage">觉得这篇文章很棒！</div>
+  </div>
+  
 
-                </div>
-            
+  <!-- Copyright -->
+  
+  <div class="post-copyright">
+    <div class="copyright-item">
+      <span class="copyright-label"><i class="fa-regular fa-pen-to-square"></i> Author:</span>
+      <span class="copyright-value">Math_Still</span>
+    </div>
+    <div class="copyright-item">
+      <span class="copyright-label"><i class="fa-regular fa-link"></i> URL:</span>
+      <span class="copyright-value">https://math-still.github.io/2024/03/28/NAO-Robot-Basis-en/</span>
+    </div>
+    <div class="copyright-item">
+      <span class="copyright-label"><i class="fa-regular fa-copyright"></i> License:</span>
+      <span class="copyright-value">CC BY-NC-SA 4.0</span>
+    </div>
+  </div>
+  
 
-            
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/NAO/">#NAO</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
+  <!-- Post Navigation -->
+  <nav class="post-nav">
+    
+    
+    <a class="post-nav-next" href="/2024/02/13/cheat/">
+      <span class="nav-label">Next <i class="fa-solid fa-chevron-right"></i></span>
+      <span class="nav-title">cheat.sh-指令以及编程语言速查表</span>
+    </a>
+    
+  </nav>
+</article>
 
-            
+    </main>
+    <footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-info">
+      <span class="footer-copyright">
+        &copy; 2023 - 2026
+        <a href="/">Math_Still</a>
+      </span>
+      <span class="footer-sep">✦</span>
+      <span class="footer-powered">
+        Powered by Hexo <a href="https://hexo.io" target="_blank">Hexo</a>
+        &amp; <a href="https://github.com/still/kawaii-hacker" target="_blank">Kawaii Hacker</a>
+      </span>
+    </div>
 
-            
-                <div class="article-nav">
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                            rel="next"
-                            href="/2024/02/13/cheat/"
-                            >
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">cheat.sh-指令以及编程语言速查表</span>
-                                    <span class="post-nav-item">下一篇</span>
-                                </span>
-                                <span class="right arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
-
-
-            
-                <div class="comment-container">
-                    <div class="comments-container">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fa-solid fa-comments"></i>&nbsp;留言
+    
+    <div class="footer-runtime" id="footerRuntime">
+      <span class="runtime-label">✨ Running for </span>
+      <span class="runtime-value" id="runtimeDisplay">loading...</span>
     </div>
     
 
-        
-            
- 
-    <div id="waline"></div>
-    <script type="module"  data-pjax>
-        import { init } from 'https://evan.beee.top/js/waline.mjs';
-
-        function loadWaline() {
-            init({
-                el: '#waline',
-                serverURL: 'https://math-still.github.io/',
-                lang: 'zh-CN',
-                dark: 'body[class~="dark-mode"]',
-                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
-            });
-        }
-
-        if ('true') {
-            const loadWalineTimeout = setTimeout(() => {
-                loadWaline();
-                clearTimeout(loadWalineTimeout);
-            }, 1000);
-        } else {
-            window.addEventListener('DOMContentLoaded', loadWaline);
-        }
-        
-    </script>
-
-
-
-        
     
-</div>
-
-                </div>
-            
-        </div>
-
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">此頁目錄</div>
-        <div class="page-title">NAO robot operation basis</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-NAO"><span class="nav-text">What is NAO?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-basic-step-in-using-the-nao-robot"><span class="nav-text">The basic step in using the nao robot.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Requires"><span class="nav-text">Requires</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Start-the-NAO-robot"><span class="nav-text">Start the NAO robot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-the-NAO-robots"><span class="nav-text">Connect the NAO robots</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Power-off-the-robot"><span class="nav-text">Power off the robot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-notes"><span class="nav-text">Other notes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flash-the-Robot"><span class="nav-text">Flash the Robot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Upgrading-state"><span class="nav-text">Upgrading state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flashing-USB-recommend"><span class="nav-text">Flashing(USB,recommend)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flash-the-NAO"><span class="nav-text">Flash the NAO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix"><span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reusing-a-formatted-USB-stick"><span class="nav-text">Reusing a formatted USB stick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Main-usages-of-the-Chest-button"><span class="nav-text">Main usages of the Chest button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chest-LED-Note"><span class="nav-text">Chest LED Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-of-notifications"><span class="nav-text">List of notifications </span></a></li></ol></li></ol>
-
+    <div class="footer-customize">
+      🌈 愿你每一天都充满惊喜
     </div>
-</div>
-            </div>
-        
-    </div>
-</div>
-
-
-                
-
-            </div>
-            
-            
-
-        </div>
-
-        <div class="main-content-footer">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info">
-            &copy;
-            
-              <span>2022</span>
-              -
-            
-            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Math_Still</a>
-        </div>
-        
-            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
-                        讀者&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
-                        閱覽&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
-        <div class="theme-info info-item">
-            <span class="powered-by-container"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 框架</span>
-                <br>
-            <span class="theme-version-container">主題&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.5</a>
-        </div>
-        
-        
-        
-            <div id="start_div" style="display:none">
-                2022/8/17 11:45:14
-            </div>
-            <div>
-                博客已運行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小時 <span class="odometer" id="runtime_minutes"></span> 分鐘 <span class="odometer" id="runtime_seconds"></span> 秒
-            </div>
-        
-        
-        
-            <script async data-pjax>
-                try {
-                    function odometer_init() {
-                    const elements = document.querySelectorAll('.odometer');
-                    elements.forEach(el => {
-                        new Odometer({
-                            el,
-                            format: '( ddd).dd',
-                            duration: 200
-                        });
-                    });
-                    }
-                    odometer_init();
-                } catch (error) {}
-            </script>
-        
-        
-        
-    </div>  
+    
+  </div>
 </footer>
-        </div>
-    </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="article-tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
+  </div>
 
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fa-regular fa-comments"></i>
-            </li>
-        
-    </ul>
-</div>
+  <!-- Sparkle Cursor Effect -->
+  <div id="sparkle-container"></div>
 
-        </div>
-    
-
-    <div class="right-side-tools-container">
-        <div class="side-tools-container">
-    <ul class="hidden-tools-list">
-        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
-            <i class="fa-regular fa-magnifying-glass-plus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
-            <i class="fa-regular fa-magnifying-glass-minus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-expand-width flex-center">
-            <i class="fa-regular fa-expand"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
-            <i class="fa-regular fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-
-        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
-            <i class="fa-regular fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="visible-tools-list">
-        <li class="right-bottom-tools toggle-tools-list flex-center">
-            <i class="fa-regular fa-cog fa-spin"></i>
-        </li>
-        
-            <li class="right-bottom-tools tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
-        
-    </ul>
-</div>
-
-    </div>
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
+  
+<script src="/js/code-rain.js"></script>
 
 
-    
+<script src="/js/kawaii.js"></script>
 
-
-</main>
-
-
-
-
-<script src="/js/utils.js"></script>
 
 <script src="/js/main.js"></script>
-
-<script src="/js/layouts/navbarShrink.js"></script>
-
-<script src="/js/tools/scrollTopBottom.js"></script>
-
-<script src="/js/tools/lightDarkSwitch.js"></script>
-
-
-
-
-
-    
-<script src="/js/tools/codeBlock.js"></script>
-
-
-
-
-    
-<script src="/js/layouts/lazyload.js"></script>
-
-
-
-
-    
-<script src="/js/tools/runtime.js"></script>
-
-    
-<script src="/js/libs/odometer.min.js"></script>
-
-    
-<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
-
-
-
-
-  
-<script src="/js/libs/Typed.min.js"></script>
-
-  
-<script src="/js/plugins/typed.js"></script>
-
-
-
-
-
-
-
-<div class="post-scripts pjax">
-    
-        
-<script src="/js/tools/tocToggle.js"></script>
-
-<script src="/js/libs/anime.min.js"></script>
-
-<script src="/js/layouts/toc.js"></script>
-
-<script src="/js/plugins/tabs.js"></script>
-
-    
-</div>
-
-
-    
-<script src="/js/libs/pjax.min.js"></script>
-
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        window.pjax = new Pjax({
-            selectors: [
-                'head title',
-                '.page-container',
-                '.pjax',
-            ],
-            history: true,
-            debug: false,
-            cacheBust: false,
-            timeout: 0,
-            analytics: false,
-            currentUrlFullReload: false,
-            scrollRestoration: false,
-            // scrollTo: true,
-        });
-
-        document.addEventListener('pjax:send', () => {
-            Global.utils.pjaxProgressBarStart();
-        });
-
-        document.addEventListener('pjax:complete', () => {
-            Global.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            Global.refresh();
-        });
-    });
-</script>
-
-
 
 
 </body>

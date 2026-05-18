@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="default">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="Hexo Theme Redefine">
-    
-    <meta name="author" content="Math_Still">
-    <!-- preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    
-    <!--- Seo Part-->
-    
-    <link rel="canonical" href="https://math-still.github.io/2024/01/28/gnu-compiler-common-options/"/>
-    <meta name="robots" content="index,follow">
-    <meta name="googlebot" content="index,follow">
-    <meta name="revisit-after" content="1 days">
-    
-        <meta name="description" content="编译链接选项：  -o output_filename：指定输出文件的名称，即生成的目标可执行文件名。 -c：只进行编译，不进行链接，生成.o（对象文件）。 -Wl,option传递选项给链接器   在g++（或gcc）编译器中，-Wl,option 是一个传递选项给链接器的特殊语法。这里的 -Wl 表示“传递给链接器（Linker）”，后面跟着逗号和具体的链接器选项。 当你需要在编译时指定链接">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="blog, tech, kawaii">
+  <meta name="description" content="A kawaii hacker blog">
+  <meta name="author" content="Math_Still">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <title>
+    GNU命令行常用参数 - Still&#39;blog
+  </title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <meta name="description" content="编译链接选项：  -o output_filename：指定输出文件的名称，即生成的目标可执行文件名。 -c：只进行编译，不进行链接，生成.o（对象文件）。 -Wl,option传递选项给链接器   在g++（或gcc）编译器中，-Wl,option 是一个传递选项给链接器的特殊语法。这里的 -Wl 表示“传递给链接器（Linker）”，后面跟着逗号和具体的链接器选项。 当你需要在编译时指定链接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GNU命令行常用参数">
 <meta property="og:url" content="https://math-still.github.io/2024/01/28/GNU-Compiler-common-options/index.html">
@@ -26,231 +34,245 @@
 <meta property="og:description" content="编译链接选项：  -o output_filename：指定输出文件的名称，即生成的目标可执行文件名。 -c：只进行编译，不进行链接，生成.o（对象文件）。 -Wl,option传递选项给链接器   在g++（或gcc）编译器中，-Wl,option 是一个传递选项给链接器的特殊语法。这里的 -Wl 表示“传递给链接器（Linker）”，后面跟着逗号和具体的链接器选项。 当你需要在编译时指定链接">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-01-28T15:27:16.000Z">
-<meta property="article:modified_time" content="2024-01-28T15:27:53.630Z">
+<meta property="article:modified_time" content="2026-05-18T10:42:19.879Z">
 <meta property="article:author" content="Math_Still">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="compiler">
+<meta property="article:tag" content="gcc">
+<meta property="article:tag" content="g++">
 <meta name="twitter:card" content="summary">
-    
-    
-    <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/images/ico.ico" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/ico.ico">
-    <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/images/ico.ico">
-    <!--- Page Info-->
-    
-    <title>
-        
-            GNU命令行常用参数 -
-        
-        Math_Still&#39;blog
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    
-<link rel="stylesheet" href="/assets/fonts.css">
-
-    <!--- Font Part-->
-    
-    
-    
-    
-
-    <!--- Inject Part-->
-    
-    <script id="hexo-configurations">
-    let Global = window.Global || {};
-    Global.hexo_config = {"hostname":"math-still.github.io","root":"/","language":"default"};
-    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"static","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"She patiently awaits my arrival.","subtitle":{"text":["不乱于心,不困于情,不畏将来,不念过往","一切的相遇即是重逢","蓑烟雨任平生，也无风雨也无晴","浮生若梦，为欢几何","日落尤为温柔,人间皆是浪漫","夏天会周而复始，该相逢的人会再相逢"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"links":{"github":"https://github.com/Math-Still/","instagram":null,"zhihu":null,"twitter":null,"email":"1742996732@qq.com"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
-    Global.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
-    Global.data_config = {"masonry":false};
-  </script>
-    
-    <!--- Fontawesome Part-->
-    
-<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/brands.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/solid.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/regular.min.css">
-
-    
-    
-    
-    
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-
-<body>
-<div class="progress-bar-container">
-    
-
-    
-        <span class="pjax-progress-bar"></span>
-        <span class="pjax-progress-icon">
-            <i class="fa-solid fa-circle-notch fa-spin"></i>
-        </span>
-    
-</div>
-
-
-<main class="page-container">
-
-    
-
-    <div class="main-content-container">
-
-        <div class="main-content-header">
-            <header class="navbar-container">
-    
-    <div class="navbar-content">
-        <div class="left">
-            
-            <a class="logo-title" href="/">
-                
-                Math_Still&#39;blog
-                
-            </a>
+<body class="kawaii-hacker-theme">
+  <!-- Loading Screen -->
+  <div id="loader" class="loader-screen">
+    <div class="loader-mascot">
+      <div class="chase-scene">
+        <!-- Progress Bar (at top) -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+          <span class="progress-label" id="progressLabel">0%</span>
         </div>
-
-        <div class="right">
-            <!-- PC -->
-            <div class="desktop">
-                <ul class="navbar-list">
-                    
-                        
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-house"></i>
-                                        
-                                        首頁
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                    
-                </ul>
-            </div>
-            <!-- Mobile -->
-            <div class="mobile">
-                
-                <div class="icon-item navbar-bar">
-                    <div class="navbar-bar-middle"></div>
+        <!-- Track -->
+        <div class="chase-track">
+          <div class="track-line"></div>
+          <div class="track-start">S</div>
+          <div class="track-end">🏁</div>
+        </div>
+        <!-- Catch message (above characters) -->
+        <div class="catch-message" id="catchMessage">🎉 Gotcha!</div>
+        <!-- Characters -->
+        <div class="chase-characters" id="chaseCharacters">
+          <!-- Dog (chasing, on left) -->
+          <div class="chase-runner dog-runner" id="dogRunner">
+            <div class="chase-move" id="dogMove">
+            <div class="pixel-dog">
+              <div class="dog-body">
+                <div class="dog-ear left"></div>
+                <div class="dog-ear right"></div>
+                <div class="dog-face">
+                  <div class="dog-eye left"></div>
+                  <div class="dog-eye right"></div>
+                  <div class="dog-eyebrow left"></div>
+                  <div class="dog-eyebrow right"></div>
+                  <div class="dog-snout">
+                    <div class="dog-nose"></div>
+                  </div>
+                  <div class="dog-tongue"></div>
                 </div>
+                <div class="dog-spot one"></div>
+                <div class="dog-spot two"></div>
+                <div class="dog-collar"></div>
+              </div>
+              <div class="dog-tail"></div>
             </div>
+            <div class="runner-shadow"></div>
+            </div>
+          </div>
+          <!-- Cat (running ahead, on right) -->
+          <div class="chase-runner cat-runner" id="catRunner">
+            <div class="chase-move" id="catMove">
+            <div class="pixel-cat">
+              <div class="cat-body">
+                <div class="cat-ear left"></div>
+                <div class="cat-ear right"></div>
+                <div class="cat-face">
+                  <div class="cat-eye left"></div>
+                  <div class="cat-eye right"></div>
+                  <div class="cat-nose"></div>
+                  <div class="cat-mouth"></div>
+                  <div class="cat-whisker left top"></div>
+                  <div class="cat-whisker left middle"></div>
+                  <div class="cat-whisker left bottom"></div>
+                  <div class="cat-whisker right top"></div>
+                  <div class="cat-whisker right middle"></div>
+                  <div class="cat-whisker right bottom"></div>
+                </div>
+                <div class="cat-stripe"></div>
+                <div class="cat-stripe two"></div>
+              </div>
+              <div class="cat-tail"></div>
+            </div>
+            <div class="runner-shadow"></div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="loader-text">
+        <span class="loader-char" style="--i:1">L</span>
+        <span class="loader-char" style="--i:2">o</span>
+        <span class="loader-char" style="--i:3">a</span>
+        <span class="loader-char" style="--i:4">d</span>
+        <span class="loader-char" style="--i:5">i</span>
+        <span class="loader-char" style="--i:6">n</span>
+        <span class="loader-char" style="--i:7">g</span>
+        <span class="loader-char" style="--i:8">.</span>
+        <span class="loader-char" style="--i:9">.</span>
+        <span class="loader-char" style="--i:10">.</span>
+      </div>
     </div>
+  </div>
 
-    <!-- Mobile drawer -->
-    <div class="navbar-drawer">
-        <ul class="drawer-navbar-list">
-            
-                
-                    <li class="drawer-navbar-item flex-center">
-                        <a class="" 
-                        href="/"  >
-                             
-                                
-                                    <i class="fa-regular fa-house"></i>
-                                
-                                首頁
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
+  <!-- Code Rain Canvas Background -->
+  <canvas id="code-rain-canvas"></canvas>
 
-        </ul>
+  <!-- Main Content Wrapper -->
+  <div class="content-wrapper">
+    <header class="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="/">
+      <span class="brand-icon">&gt;_</span>
+      <span class="brand-text">Still&#39;blog</span>
+    </a>
+
+    <nav class="navbar-links">
+      
+        
+          
+          <a class="navbar-link" href="/">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/archives/">
+            <i class="fa-solid fa-box-archive"></i>
+            <span>Archives</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/tags/">
+            <i class="fa-solid fa-tags"></i>
+            <span>Tags</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/categories/">
+            <i class="fa-solid fa-folder"></i>
+            <span>Categories</span>
+          </a>
+        
+          
+          <a class="navbar-link" href="/about/">
+            <i class="fa-solid fa-user"></i>
+            <span>About</span>
+          </a>
+        
+      
+    </nav>
+
+    <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle menu">
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="navbar-drawer" id="navbarDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">&gt;_ Menu</span>
+      <button class="drawer-close" id="drawerClose">&times;</button>
     </div>
-
-    <div class="window-mask"></div>
-
+    
+      
+        
+        <a class="drawer-link" href="/">
+          <i class="fa-solid fa-house"></i>
+          Home
+        </a>
+      
+        
+        <a class="drawer-link" href="/archives/">
+          <i class="fa-solid fa-box-archive"></i>
+          Archives
+        </a>
+      
+        
+        <a class="drawer-link" href="/tags/">
+          <i class="fa-solid fa-tags"></i>
+          Tags
+        </a>
+      
+        
+        <a class="drawer-link" href="/categories/">
+          <i class="fa-solid fa-folder"></i>
+          Categories
+        </a>
+      
+        
+        <a class="drawer-link" href="/about/">
+          <i class="fa-solid fa-user"></i>
+          About
+        </a>
+      
+    
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
 </header>
 
-
-        </div>
-
-        <div class="main-content-body">
-
-            
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            
-            
-                <div class="article-title">
-                    <h1 class="article-title-regular">GNU命令行常用参数</h1>
-                </div>
-            
-                
-            
-
-            
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/images/redefine-avatar.jpg">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">Math_Still</span>
-                            
-                                <span class="author-label">Lv2</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-01-28 23:27:16</span>
-        <span class="mobile">2024-01-28 23:27</span>
-        <span class="hover-info">撰寫</span>
-    </span>
+    <main class="main-content">
+      <article class="post-article scroll-reveal">
+  <header class="post-header">
+    <h1 class="post-title">GNU命令行常用参数</h1>
+    <div class="post-meta">
+      <span class="post-date">
+        <i class="fa-regular fa-calendar"></i> 2024-01-28
+      </span>
+      
+      <span class="post-updated">
+        <i class="fa-regular fa-pen-to-square"></i> Updated: 2026-05-18
+      </span>
+      
+      <span class="post-words">
+        <i class="fa-regular fa-file-lines"></i> ~316 words
+      </span>
+      
+      <span class="post-categories">
+        <i class="fa-regular fa-folder-open"></i>
+        
+        <a href="/categories/Programming/">Programming</a>
+        
+      </span>
+      
+    </div>
     
-        <span class="article-date article-meta-item">
-            <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-01-28 23:27:53</span>
-            <span class="mobile">2024-01-28 23:27</span>
-            <span class="hover-info">更新</span>
-        </span>
+    <div class="post-tags">
+      
+      <a class="post-tag" href="/tags/Linux/">#Linux</a>
+      
+      <a class="post-tag" href="/tags/compiler/">#compiler</a>
+      
+      <a class="post-tag" href="/tags/gcc/">#gcc</a>
+      
+      <a class="post-tag" href="/tags/g/">#g++</a>
+      
+    </div>
     
+  </header>
 
-    
-    
-
-    
-    
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content markdown-body">
-                <ol>
+  <div class="post-content markdown-body">
+    <ol>
 <li><p><strong>编译链接选项</strong>：</p>
 <ul>
 <li><code>-o output_filename</code>：指定输出文件的名称，即生成的目标可执行文件名。</li>
@@ -260,7 +282,7 @@
 <blockquote>
 <p>在g++（或gcc）编译器中，<code>-Wl,option</code> 是一个传递选项给链接器的特殊语法。这里的 <code>-Wl</code> 表示“传递给链接器（Linker）”，后面跟着逗号和具体的链接器选项。</p>
 <p>当你需要在编译时指定链接器特有的选项，但又不想直接调用链接器（如ld），而是希望通过g++命令一并处理编译和链接步骤，这时就可以使用 <code>-Wl,option</code> 的形式。</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -Wl,-rpath=/path/to/libs my_program.o -lmy_library</span><br></pre></td></tr></table></figure></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -Wl,-rpath=/path/to/libs my_program.o -lmy_library</span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，<code>-Wl,-rpath=/path/to/libs</code> 会将 <code>-rpath=/path/to/libs</code> 这个选项传递给链接器，使得生成的可执行文件在运行时能够从 <code>/path/to/libs</code> 目录查找动态链接库。</p>
 <p>其他常见的 <code>-Wl,option</code> 示例包括：</p>
@@ -325,391 +347,94 @@
 </ol>
 <p>​	</p>
 
-            </div>
+  </div>
 
-            
-                <div class="post-copyright-info">
-                    <div class="article-copyright-info-container">
-    <ul>
-        <li><strong>標題:</strong> GNU命令行常用参数</li>
-        <li><strong>作者:</strong> Math_Still</li>
-        <li><strong>撰寫于:</strong> 2024-01-28 23:27:16</li>
-        
-            <li>
-                <strong>更新于:</strong> 2024-01-28 23:27:53
-            </li>
-        
-        <li>
-            <strong>連結:</strong> https://math-still.github.io/2024/01/28/GNU-Compiler-common-options/
-        </li>
-        <li>
-            <strong>版權宣告:</strong> 本作品采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
-        </li>
-    </ul>
-</div>
+  <!-- Kawaii Animal at End of Article -->
+  
+  <div class="post-animal" id="postAnimal">
+    <div class="animal-emoji" id="animalEmoji">🐱</div>
+    <div class="animal-message" id="animalMessage">觉得这篇文章很棒！</div>
+  </div>
+  
 
-                </div>
-            
+  <!-- Copyright -->
+  
+  <div class="post-copyright">
+    <div class="copyright-item">
+      <span class="copyright-label"><i class="fa-regular fa-pen-to-square"></i> Author:</span>
+      <span class="copyright-value">Math_Still</span>
+    </div>
+    <div class="copyright-item">
+      <span class="copyright-label"><i class="fa-regular fa-link"></i> URL:</span>
+      <span class="copyright-value">https://math-still.github.io/2024/01/28/GNU-Compiler-common-options/</span>
+    </div>
+    <div class="copyright-item">
+      <span class="copyright-label"><i class="fa-regular fa-copyright"></i> License:</span>
+      <span class="copyright-value">CC BY-NC-SA 4.0</span>
+    </div>
+  </div>
+  
 
-            
+  <!-- Post Navigation -->
+  <nav class="post-nav">
+    
+    <a class="post-nav-prev" href="/2024/01/28/GDBdebug/">
+      <span class="nav-label"><i class="fa-solid fa-chevron-left"></i> Previous</span>
+      <span class="nav-title">GDBdebug</span>
+    </a>
+    
+    
+    <a class="post-nav-next" href="/2024/01/27/findhead-lib/">
+      <span class="nav-label">Next <i class="fa-solid fa-chevron-right"></i></span>
+      <span class="nav-title">Linux编译运行时查找头文件和库的规则</span>
+    </a>
+    
+  </nav>
+</article>
 
-            
+    </main>
+    <footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-info">
+      <span class="footer-copyright">
+        &copy; 2023 - 2026
+        <a href="/">Math_Still</a>
+      </span>
+      <span class="footer-sep">✦</span>
+      <span class="footer-powered">
+        Powered by Hexo <a href="https://hexo.io" target="_blank">Hexo</a>
+        &amp; <a href="https://github.com/still/kawaii-hacker" target="_blank">Kawaii Hacker</a>
+      </span>
+    </div>
 
-            
-                <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2024/01/28/GDBdebug/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">GDBdebug</span>
-                                    <span class="post-nav-item">上一篇</span>
-                                </span>
-                            </a>
-                        </div>
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                            rel="next"
-                            href="/2024/01/27/findhead-lib/"
-                            >
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">Linux编译运行时查找头文件和库的规则</span>
-                                    <span class="post-nav-item">下一篇</span>
-                                </span>
-                                <span class="right arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
-
-
-            
-                <div class="comment-container">
-                    <div class="comments-container">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fa-solid fa-comments"></i>&nbsp;留言
+    
+    <div class="footer-runtime" id="footerRuntime">
+      <span class="runtime-label">✨ Running for </span>
+      <span class="runtime-value" id="runtimeDisplay">loading...</span>
     </div>
     
 
-        
-            
- 
-    <div id="waline"></div>
-    <script type="module"  data-pjax>
-        import { init } from 'https://evan.beee.top/js/waline.mjs';
-
-        function loadWaline() {
-            init({
-                el: '#waline',
-                serverURL: 'https://math-still.github.io/',
-                lang: 'zh-CN',
-                dark: 'body[class~="dark-mode"]',
-                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
-            });
-        }
-
-        if ('true') {
-            const loadWalineTimeout = setTimeout(() => {
-                loadWaline();
-                clearTimeout(loadWalineTimeout);
-            }, 1000);
-        } else {
-            window.addEventListener('DOMContentLoaded', loadWaline);
-        }
-        
-    </script>
-
-
-
-        
     
-</div>
-
-                </div>
-            
-        </div>
-
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">此頁目錄</div>
-        <div class="page-title">GNU命令行常用参数</div>
-        
-
+    <div class="footer-customize">
+      🌈 愿你每一天都充满惊喜
     </div>
-</div>
-            </div>
-        
-    </div>
-</div>
-
-
-                
-
-            </div>
-            
-            
-
-        </div>
-
-        <div class="main-content-footer">
-            <footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info">
-            &copy;
-            
-              <span>2022</span>
-              -
-            
-            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Math_Still</a>
-        </div>
-        
-            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
-                        讀者&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
-                        閱覽&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
-        <div class="theme-info info-item">
-            <span class="powered-by-container"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 框架</span>
-                <br>
-            <span class="theme-version-container">主題&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.5</a>
-        </div>
-        
-        
-        
-            <div id="start_div" style="display:none">
-                2022/8/17 11:45:14
-            </div>
-            <div>
-                博客已運行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小時 <span class="odometer" id="runtime_minutes"></span> 分鐘 <span class="odometer" id="runtime_seconds"></span> 秒
-            </div>
-        
-        
-        
-            <script async data-pjax>
-                try {
-                    function odometer_init() {
-                    const elements = document.querySelectorAll('.odometer');
-                    elements.forEach(el => {
-                        new Odometer({
-                            el,
-                            format: '( ddd).dd',
-                            duration: 200
-                        });
-                    });
-                    }
-                    odometer_init();
-                } catch (error) {}
-            </script>
-        
-        
-        
-    </div>  
+    
+  </div>
 </footer>
-        </div>
-    </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="article-tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
+  </div>
 
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fa-regular fa-comments"></i>
-            </li>
-        
-    </ul>
-</div>
+  <!-- Sparkle Cursor Effect -->
+  <div id="sparkle-container"></div>
 
-        </div>
-    
-
-    <div class="right-side-tools-container">
-        <div class="side-tools-container">
-    <ul class="hidden-tools-list">
-        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
-            <i class="fa-regular fa-magnifying-glass-plus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
-            <i class="fa-regular fa-magnifying-glass-minus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-expand-width flex-center">
-            <i class="fa-regular fa-expand"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
-            <i class="fa-regular fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-
-        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
-            <i class="fa-regular fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="visible-tools-list">
-        <li class="right-bottom-tools toggle-tools-list flex-center">
-            <i class="fa-regular fa-cog fa-spin"></i>
-        </li>
-        
-            <li class="right-bottom-tools tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
-        
-    </ul>
-</div>
-
-    </div>
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
+  
+<script src="/js/code-rain.js"></script>
 
 
-    
+<script src="/js/kawaii.js"></script>
 
-
-</main>
-
-
-
-
-<script src="/js/utils.js"></script>
 
 <script src="/js/main.js"></script>
-
-<script src="/js/layouts/navbarShrink.js"></script>
-
-<script src="/js/tools/scrollTopBottom.js"></script>
-
-<script src="/js/tools/lightDarkSwitch.js"></script>
-
-
-
-
-
-    
-<script src="/js/tools/codeBlock.js"></script>
-
-
-
-
-    
-<script src="/js/layouts/lazyload.js"></script>
-
-
-
-
-    
-<script src="/js/tools/runtime.js"></script>
-
-    
-<script src="/js/libs/odometer.min.js"></script>
-
-    
-<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
-
-
-
-
-  
-<script src="/js/libs/Typed.min.js"></script>
-
-  
-<script src="/js/plugins/typed.js"></script>
-
-
-
-
-
-
-
-<div class="post-scripts pjax">
-    
-        
-<script src="/js/tools/tocToggle.js"></script>
-
-<script src="/js/libs/anime.min.js"></script>
-
-<script src="/js/layouts/toc.js"></script>
-
-<script src="/js/plugins/tabs.js"></script>
-
-    
-</div>
-
-
-    
-<script src="/js/libs/pjax.min.js"></script>
-
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        window.pjax = new Pjax({
-            selectors: [
-                'head title',
-                '.page-container',
-                '.pjax',
-            ],
-            history: true,
-            debug: false,
-            cacheBust: false,
-            timeout: 0,
-            analytics: false,
-            currentUrlFullReload: false,
-            scrollRestoration: false,
-            // scrollTo: true,
-        });
-
-        document.addEventListener('pjax:send', () => {
-            Global.utils.pjaxProgressBarStart();
-        });
-
-        document.addEventListener('pjax:complete', () => {
-            Global.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            Global.refresh();
-        });
-    });
-</script>
-
-
 
 
 </body>
